@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OfertaLaboralLinkedIn",
+  "description": "Esquema formal para la muestra de ofertas laborales de LinkedIn del estudio de tesis",
+  "type": "object",
+  "required": [
+    "id",
+    "titulo",
+    "empresa",
+    "sector",
+    "subsector",
+    "ubicacion",
+    "modalidad",
+    "descripcion_completa",
+    "url",
+    "fecha_recoleccion"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identificador único de la oferta (ej. JOB-TI-001 o JOB-NOTI-045)"
+    },
+    "titulo": {
+      "type": "string",
+      "description": "Título del puesto (ej. 'Ingeniero de Software Backend')"
+    },
+    "empresa": {
+      "type": "string",
+      "description": "Nombre de la empresa contratante"
+    },
+    "sector": {
+      "type": "string",
+      "enum": ["TI", "No-TI"],
+      "description": "Estratificación metodológica de la tesis (TI o No-TI)"
+    },
+    "subsector": {
+      "type": "string",
+      "description": "Rubro económico específico (ej. Software House, Fintech, Banca, Minería, Retail, Telecomunicaciones, Gobierno)"
+    },
+    "rol_categoria": {
+      "type": "string",
+      "description": "Categoría general del rol (ej. Desarrollo Software, Datos/IA, DevOps/Cloud, Ciberseguridad, Arquitectura/Liderazgo)"
+    },
+    "ubicacion": {
+      "type": "string",
+      "description": "Ubicación geográfica (ej. 'Santiago, Región Metropolitana, Chile', 'Chile (Remoto)')"
+    },
+    "modalidad": {
+      "type": "string",
+      "enum": ["Presencial", "Híbrido", "Remoto", "No especificado"],
+      "description": "Modalidad de trabajo declarada"
+    },
+    "nivel_experiencia": {
+      "type": "string",
+      "description": "Nivel declarado (ej. Sin experiencia / Junior, Intermedio, Senior, No especificado)"
+    },
+    "requisitos_tecnicos": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Lista de tecnologías, lenguajes o herramientas extraídas"
+    },
+    "descripcion_completa": {
+      "type": "string",
+      "description": "Texto íntegro de la descripción del trabajo publicado en LinkedIn"
+    },
+    "url": {
+      "type": "string",
+      "description": "Enlace directo de la oferta en LinkedIn"
+    },
+    "fecha_recoleccion": {
+      "type": "string",
+      "format": "date",
+      "description": "Fecha en que se registró la oferta (YYYY-MM-DD)"
+    }
+  }
+}

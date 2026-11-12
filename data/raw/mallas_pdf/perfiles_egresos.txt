@@ -1,0 +1,224 @@
+USACH- EJECUCION
+------------------------------
+El/la Ingeniero/a de Ejecución en Computación e Informática es un/a profesional capaz de diagnosticar y resolver problemas de ingeniería informática, colaborando en la ejecución de proyectos y en la gestión de equipos de trabajo. Por lo tanto, tiene la capacidad para modelar procesos y datos, diseñar e implementar sistemas de información y administrar proyectos de software. Aplica criterios de calidad, eficiencia, innovación, responsabilidad y ética en su quehacer profesional.
+
+---------------------------------
+USACH -CIVIL
+-------------------------------
+ la carrera de Ingeniería Civil en Informática, la
+Universidad de Santiago de Chile ha establecido un
+compromiso educativo con sus estudiantes. Éste se
+expresa en los resultados de aprendizaje especificados en este Perfil de Egreso. Dichos resultados han
+sido clasificados de acuerdo a las áreas oficiales
+establecidas en el Modelo Educativo Institucional,
+habiéndose hecho el mayor esfuerzo para que ellos
+reflejen en la forma más fidedigna posible el aporte
+efectivamente realizado por la Universidad.
+I. ÁREAS PRINCIPALES DE CONOCIMIENTO
+El profesional egresado o egresada de la carrera
+Ingeniería Civil en Informática de la Universidad de
+Santiago de Chile posee conocimientos en ciencias
+básicas (matemática y física), ciencias de la ingeniería (matemática aplicada y estadística, gestión
+de proyectos, teoría de sistemas), ingeniería informática (ciencia de la computación, tecnología de la
+computación, ingeniería de software, base de datos
+y sistemas de información, redes de comunicación)
+y ciencias humanas y sociales (ciencias económicas
+y financieras, teoría y gestión de la organización,
+ciencias del comportamiento humano, ética del profesional, lenguaje oral y escrito (español e inglés)).
+II. HABILIDADES-DESTREZAS PROFESIONALES
+El profesional egresado o egresada de la carrera
+Ingeniería Civil en Informática de la Universidad de
+Santiago de Chile posee las siguientes habilidades y
+destrezas profesionales al momento de egreso:
+(i) Habilidades generales
+1. Capacidad de aprendizaje autónomo
+2. Capacidad de trabajo en equipo
+3. Capacidad de liderazgo
+4. Capacidad para comunicarse efectivamente en
+español de forma oral, escrita y simbólica
+5. Capacidad de pensamiento crítico
+6. Capacidad de comunicarse en forma oral y escrita a nivel intermedio en inglés técnico
+(ii) Habilidades especializadas genéricas
+7. Capacidad para aplicar conocimiento de ciencias básicas, de la Ingeniería y de la especialidad en los ámbitos de su profesión
+8. Capacidad para abordar y resolver problemas
+de ingeniería en una perspectiva sistémica
+9. Capacidad para diagnosticar, modelar, diseñar y
+mejorar continuamente sistemas o procesos en
+el ámbito de su especialidad
+10. Capacidad para formular proyectos de la especialidad y evaluar su factibilidad técnica y económica
+11. Capacidad para gestionar y administrar proyectos o empresas relacionadas con su profesión
+12. Capacidad para utilizar TICs y software de la
+especialidad, así como técnicas y herramientas
+modernas de la ingeniería
+13. Entender el impacto de las soluciones de ingeniería en un contexto global, económico, medioambiental y social
+(iii) Habilidades especializadas específicas
+14. Identificar oportunidades de uso de la información y TICs
+15. Recolectar y analizar datos con métodos y herramientas computacionales para transformarlos en información
+16. Analizar, modelar y desarrollar sistemas, procesos y productos basados en TIC (ofrecidos y en
+operación)
+17. Adecuar las TIC vigentes a los cambios organizacionales
+18. Generar y construir abstracciones de fenómenos del mundo real usando la formación técnica
+de su especialidad
+III. ACTITUDES Y VALORES
+El profesional egresado o egresada de la carrera
+Ingeniería Civil en Informática de la Universidad de
+Santiago de Chile posee las actitudes y valores que
+a continuación se señalan:
+1. Comprensión de la responsabilidad profesional,
+social y ética en todo contexto
+2. Disposición hacia el emprendimiento y la innovación
+3. Adaptabilidad a cambios y contextos diversos
+4. Compromiso con el trabajo bien realizado
+(Calidad)
+5. Disposición para buscar soluciones con recursos escasos
+
+------------------------------------------------------------
+UCHILE- ING CIVIL COMPUTACION 
+
+El Ingeniero y la Ingeniera Civil en Computación (ICC) de la Universidad de Chile, son profesionales que conciben, diseñan, construyen, mantienen, operan, evalúan e integran soluciones computacionales que responden a las exigencias y restricciones que presentan problemas de distinta complejidad y naturaleza, utilizando un enfoque científico e ingenieril y aplicando criterios de eficiencia y eficacia.
+ 
+Los ámbitos que todo egresado y toda egresada domina al término de la carrera son: Fundamentos de la Computación, Ingeniería de Datos, Ingeniería de Software y Sistemas.
+ 
+Principales habilidades
+Abstraer, modelar y formalizar matemáticamente problemas susceptibles de ser resueltos computacionalmente con el fin de dar soporte al diseño de soluciones utilizando herramientas teóricas, lenguajes y representaciones formales.
+Extraer, obtener, generar, almacenar y recuperar información valiosa de datos diversos, complejos y masivos, así como desarrollar una perspectiva respecto a cómo observar, modelar, procesar y analizar los datos para dar respuestas eficientes a los requerimientos de ese procesamiento.
+Concebir, desarrollar y mantener soluciones de software que den solución a problemas prácticos de forma sistemática y cuantificable, preocupándose por la calidad y la efectividad de las soluciones, siendo al mismo tiempo capaces de gestionar estos proyectos.
+Implementar programas eficientes en el uso de recursos computacionales, explotando las características del sistema operativo y su interacción con la arquitectura de hardware y la red de datos, previniendo, diagnosticando y resolviendo errores de programación y/o problemas de desempeño detectados.
+------------------------------------------------------------------
+UNAB- ING COMPUTACION INFORMATICA
+
+El egresado de Ingeniería en Computación e Informática titulado de la Universidad Andrés Bello, sustenta su quehacer profesional en los valores de excelencia, integridad respecto de los temas que trabaja y responsabilidad para con la sociedad, capaz de enfrentar su trabajo con una visión pluralista, en un contexto de respecto.
+
+La carrera de Ingeniería en Computación e informática forma profesionales con conocimiento técnico y científico para identificar problemas, siendo un líder en la toma de decisiones y ejecución de los proyectos aplicando tecnologías disruptivas, proponiendo soluciones que impactan en la gestión organizacional.
+
+El grado de Licenciado(a) en Ingeniería permite que los graduados propongan soluciones a través del sustento que otorga el pensamiento lógico-deductivo, por tanto, es capaz de concebir y diseñar soluciones a problemas existentes en diversas organizaciones como resultado del análisis con base en su haber científico y tecnológico, lo que además lo habilita para realizar estudios de postgrados tanto dentro como fuera del país.
+
+La carrera de Ingeniería en Computación e Informática de la Universidad Andrés Bello, forma profesionales capaces de trabajar en equipos multidisciplinarios para proponer alternativas de solución en diseño, desarrollo, evaluación, dirección y control de proyectos tecnológicos que incorporen directrices de calidad y seguridad de la información facilitando transformación digital dentro de las organizaciones.
+
+Malla CurricularRevisa la malla curricular a continuación
+
+-----------------------------------------------------------------------
+UMAG- ING COMOPUTACION E INFORMATICA
+
+El/la Ingeniero/a de la Universidad de Magallanes, en cualquiera de sus cuatro especialidades, es un/a profesional competente con sólidos conocimientos teóricos y prácticos que le permiten desempeñarse en la supervisión, operación, implementación, implantación y mantenimiento de componentes, equipos, procesos y sistemas relacionados a sus respectivas especialidades, en forma eficiente y tomando en consideración factores éticos, sociales y ambientales. Su preparación le permite adaptarse a tecnologías emergentes, así como también a desarrollarse en distintas áreas de su especialidad, constituyéndose en un aporte fundamental a la sociedad.
+
+----------------------------------------------------------------------------
+UTEM -ING INFORMATICA
+
+El(La) Ingeniero(a) en Informática de la Universidad Tecnológica Metropolitana es un(a) profesional con sólida formación en ingeniería aplicada e informática, capacitado(a) para diseñar, desarrollar e integrar soluciones de software y sistemas de información, gestionar redes y recursos computacionales, y administrar tecnologías de la información, considerando criterios de seguridad, confiabilidad, calidad y eficiencia. Puede desempeñarse en organizaciones públicas, privadas y del tercer sector, contribuyendo al desarrollo tecnológico y organizacional mediante el uso de metodologías, herramientas y tecnologías vigentes. Complementa su formación disciplinar con competencias genéricas orientadas al aprendizaje continuo, la comunicación efectiva, el trabajo colaborativo, el emprendimiento, la innovación y el ejercicio profesional con responsabilidad social.
+
+---------------------------------------------------------------------------
+UDEC- ING CIVIL INFORMATICA
+
+Las/los Ingenieros/as Civiles Informáticos/as de la Universidad de Concepción son profesionales calificados para identificar, abordar y solucionar problemas que requieren procesamiento automático de información. Han sido formados para aplicar principios de matemáticas, ciencias de la ingeniería y de la computación. Están capacitados/as para identificar necesidades de usuarios, a partir de las cuales formulan y diseñan soluciones informáticas que las satisfagan. Pueden analizar e interpretar grandes volúmenes de datos que describen sistemas, así como también, diseñar experimentos para evaluar, caracterizar y modelar sistemas informáticos complejos. Están preparados/as para trabajar en equipo, para comunicarse y desenvolverse con responsabilidad profesional y ética en un contexto global, económico y social. Son profesionales capaces de adaptarse a la dinámica que caracteriza la evolución teórica y tecnológica de la disciplina, estimulados por un proceso de auto-aprendizaje continuo.
+
+---------------------------------------------------------------------------------
+U FEDERICO SANTA MARIA- ING INFORMATICA
+
+La carrera de Ingeniería en Informática de la USM forma profesionales con competencias que les faculta para aplicar un cuerpo distintivo de conocimientos científicos, computacionales, matemáticos y de ingeniería a diversos problemas organizacionales, sociales, industriales. Facultado para el desarrollo de productos y servicios tecnológicos sobre plataformas heterogéneas. Adicionalmente posee conocimientos para aplicar soluciones de análisis de datos avanzado sobre distintos dominios del quehacer de organizaciones públicas o privadas del ámbito nacional e internacional, demostrando capacidad para integrar equipos multidisciplinarios y multiculturales, tomando en consideración las restricciones impuestas por la legislación, la ética, las finanzas y las personas.
+
+----------------------------------------------------------------------------------
+PUCV- ING INFORMATICA
+
+
+1. Reconoce la dimensión trascendente de la existencia humana y la antropología cristiana como respuesta valiosa al sentido de la vida.
+
+2. Actúa éticamente, iluminado/a por la propuesta cristiana, en contextos reales, con autonomía y respeto hacia los/las demás, buscando el bien común, la promoción de los derechos humanos y la realización de la persona humana en un contexto de diversidad.
+
+3. Comunica de manera clara y coherente sus ideas a través del castellano, su lengua materna, en un contexto académico.
+
+4. Usa las tecnologías de la información y comunicación como herramienta del desarrollo académico y profesional.
+
+5. Demuestra capacidad científica; de análisis, abstracción, síntesis y reflexión crítica con el objetivo de resolver problemas, construir conocimiento y desarrollar autoaprendizaje, tanto a nivel individual como en el trabajo en equipos interdisciplinarios.
+
+6. Comunica en forma oral y escrita en idioma Inglés, con el fin de facilitar su inserción y participación en contextos multiculturales e interdisciplinares.
+
+7. Reconoce la lectura, la relación con los demás, la actividad física, la vida sana, el cuidado medioambiental, el arte y la cultura como fuentes de desarrollo personal integral.
+
+8. Reconoce según sus intereses, en instancias universitarias de formación para
+
+una ciudadanía responsable.
+
+---------------------------------------------------------------------------------------
+
+DUOC UC - ING INFORMATICA
+
+El(la) Ingeniero(a) en Informática de Duoc UC diseña,
+desarrolla, implementa y despliega soluciones
+informáticas, resolviendo problemas complejos en su área
+de especialización profesional. En este contexto, evalúa
+y aplica estándares, marcos de trabajo y regulatorios,
+tecnologías y metodologías. Cuenta con una cultura de
+innovación y trabaja colaborativamente para evaluar
+y gestionar proyectos informáticos interdisciplinarios,
+integrando la capacidad analítica y pensamiento crítico,
+que le permite comprender y resolver las necesidades de
+las organizaciones.
+Integra en su quehacer la ética profesional y el aprendizaje
+permanente. Se comunica a través de distintos medios en
+diversos contextos en un entorno global.
+Posee una formación centrada en las personas, con una
+mirada trascendente, desde la visión cristiana, que da
+sentido a la vida y contribuye al bien común de la sociedad.
+Con la mención en Automatización quien se titula de
+Duoc UC evalúa técnica y económicamente proyectos
+informáticos, y modela procesos, para automatizarlos por
+medio de software. Utiliza estándares, marcos de trabajo
+y regulatorios, tecnologías y metodologías propias del
+área de especialización profesional, con la finalidad de
+optimizar los servicios y garantizar su calidad, seguridad
+y sostenibilidad, en base a los requerimientos de las
+organizaciones. 
+--------------------------------------------------------------------------------------------------
+
+USS - ING CIVIL INFORMATICA
+
+El/la egresado/a de Ingeniería Civil Informática de la USS es un profesional íntegro, ético y humanista, con sólida formación en ciencias básicas, ingeniería y tecnologías de la información. Está capacitado para diseñar, evaluar e implementar proyectos informáticos, soluciones de sistemas de información y gestionar áreas TI, generando valor organizacional con calidad, seguridad e innovación. Posee habilidades de abstracción, comunicación, trabajo interdisciplinario, manejo de inglés a nivel intermedio, sentido de responsabilidad social, ambiental y liderazgo emprendedor, pudiendo desempeñarse en instituciones públicas y privadas o crear empresas tecnológicas.
+
+----------------------------------------------------------------------------------------------------
+
+UST- ING CIVIL INFORMATICA
+
+Las y los egresados de esta carrera tienen por objetivo optimizar procesos, con la capacidad de aplicar principios científicos y tecnológicos e innovación al diseño y desarrollo de sistemas informáticos y de control, incorporando gestión de procesos, que apoyan el desarrollo de proyectos de automatización, robótica y transformación digital, considerando la sustentabilidad ambiental y social.
+
+El sello institucional Santo Tomás y su formación en el ámbito valórico, permite identificar en estas y estos profesionales una actitud de compromiso, lealtad y honestidad, características de la formación entregada durante su desarrollo.
+
+En el ámbito del trabajo en equipo, demuestran habilidades de liderazgo, conduciendo equipos multidisciplinarios hacia el logro de objetivos en proyectos tecnológicos. Actúan con una firme ética profesional, considerando siempre las implicaciones sociales de sus acciones y las soluciones que implementan. La adaptabilidad es una de sus fortalezas, mostrando una constante actualización en un campo que no deja de evolucionar. Comunican ideas técnicas con claridad a diversos públicos, y su visión estratégica les permite evaluar el impacto de las soluciones tecnológicas, alineando siempre la tecnología con objetivos de desarrollo sostenible y de negocio.
+
+---------------------------------------------------------------------------------------------------------
+UFRO - ING CIVIL INFORMATICA
+
+El Ingeniero o la Ingeniera Civil Informático de la Universidad de La Frontera es un o una profesional del área de las tecnologías de la información y comunicación con capacidades para desempeñarse en los ámbitos de diseño e implementación de soluciones informáticas de vanguardia, ingeniería de software e ingeniería de datos, con la finalidad de contribuir al desarrollo económico y social del país.
+
+Su sello profesional es el diseño en ingeniería con innovación y responsabilidad social. Cuenta con formación profesional en ciencias básicas, ciencias de la ingeniería, ciencias de la computación y de especialidad, fundamentalmente integración de tecnologías informáticas, ingeniería de software, diseño de proyectos informáticos, análisis y seguridad de datos. La integración de estos conocimientos permite a este o esta profesional solucionar problemas de gestión de la información centrado en las necesidades de las personas a través de la mejora y automatización de los procesos organizacionales.
+
+Posee habilidades para comunicarse de manera global, integrar equipos de trabajo de alto rendimiento y aplicar nuevos conocimientos utilizando estrategias apropiadas de aprendizaje. Asimismo, reconoce las responsabilidades éticas en su quehacer profesional.
+
+Su formación le permite desempeñarse en organizaciones del sector público o privado, y ejercer su profesión en forma independiente.
+
+-----------------------------------------------------------------------------------------------------------------
+U BIOBIO- ING EJECUCION INFORMATICA
+
+El/la ingeniero/a de ejecución en computación e informática de la Universidad del Bío-Bío posee una sólida formación en las Tecnologías de Información y Comunicación (TIC) y en gestión organizacional. Lo anterior le permite analizar, diseñar, construir e implementar soluciones informáticas efectivas y eficientes para resolver diversas necesidades de la comunidad.
+
+Está capacitado para aplicar conocimientos en las áreas disciplinares de sistemas computacionales y TIC, gestión informática, ingeniería de software y área de las matemáticas. Se distingue por su capacidad de adaptación, autoaprendizaje, responsabilidad social, trabajo en equipo y respeto a la diversidad y es capaz de adaptarse con facilidad a distintos ambientes laborales y a las Tecnologías de Información y Comunicación emergentes, demostrando alta capacidad y motivación por un autoaprendizaje permanente y tenacidad para llevar adelante exitosamente los proyectos en que se involucra.
+
+-----------------------------------------------------------------------------------------------------------------------
+UTALCA- ING CIVIL COMPUTACION
+
+Quienes egresan de la carrera de Ingeniería Civil en Computación de la Universidad de Talca son profesionales integrales, con enfoque en el área de la informática, capaces de idear, diseñar, desarrollar y desplegar soluciones de software innovadoras, considerando aspectos técnicos, económicos, sociales y/o ambientales.
+
+Gracias a su base formativa en ciencias básicas y de la ingeniería, poseen una visión integral de los sistemas computacionales y la capacidad de resolver problemas desafiantes, de manera profesional, con sentido ético y de responsabilidad social. Así mismo, la formación en emprendimiento les permite identificar oportunidades de negocio en el sector tecnológico y desarrollar proyectos propios.
+
+Además, cuentan con habilidades de comunicación y liderazgo que le permiten trabajar colaborativamente en equipos multi e interdisciplinarios y adaptarse a entornos profesionales en constante evolución.
+
+----------------------------------------------------------------------------------------------------------------------------
+U AUTONOMA - ING INFORMATICA
+
+Quien egrese de la carrera de Ingeniería  Informática de la Universidad Autónoma de Chile, es un profesional con formación científica y tecnológica en ciencias básicas, ciencias de la ingeniería y de la ingeniería aplicada para resolver problemas fundamentales y propios de las organizaciones.
+
+Es capaz de desempeñarse en el diagnóstico, diseño y gestión, en estructurar y recomendar evaluación de planes para la mejora de resultados de procesos informáticos, tanto en organizaciones de producción de bienes como de servicios, o en sus propios emprendimientos. Considerando los recursos humanos, financieros y tecnológicos, así como también, los aspectos legales, normativos y los distintos agentes que influyen en los procesos de mejora, comunicándolo de manera efectiva mediante el uso de tecnologías disponibles acorde a su profesión.
+
+El Ingeniero  Informático, posee como sello diferenciador la capacidad de trabajo en equipos multidisciplinarios, bajo un marco de comportamiento ético, responsabilidad social, visión sistemática y de evaluación de riesgos.
+
+ 

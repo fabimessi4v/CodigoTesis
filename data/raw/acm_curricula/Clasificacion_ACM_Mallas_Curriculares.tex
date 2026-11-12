@@ -1,0 +1,1390 @@
+\documentclass[11pt,a4paper]{article}
+
+% --- PAQUETES DE CONFIGURACIÓN ---
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[margin=2.0cm]{geometry}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage[inline]{enumitem}
+\usepackage{amsmath,amssymb}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{xurl}
+\usepackage{fancyhdr}
+\usepackage{colortbl}
+\usepackage{array}
+
+% --- CONFIGURACIÓN DE COLORES INSTITUCIONALES USACH ---
+\definecolor{UsachNavy}{RGB}{0, 40, 85}
+\definecolor{UsachOrange}{RGB}{234, 118, 0}
+\definecolor{LightGray}{RGB}{246, 248, 251}
+\definecolor{DarkGray}{RGB}{60, 64, 67}
+\definecolor{HeaderBg}{RGB}{235, 240, 248}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=UsachNavy,
+    urlcolor=UsachOrange,
+    pdftitle={Clasificación ACM de Mallas Curriculares Universitarias en Chile},
+    pdfauthor={Fabián Ibarra Norambuena - USACH}
+}
+
+% --- ENCABEZADO Y PIE DE PÁGINA ---
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\small\sffamily\color{DarkGray} Mallas Curriculares y Clasificación ACM}
+\lhead{\small\sffamily\color{UsachNavy}\textbf{USACH | Trabajo de Titulación}}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% --- DOCUMENTO PRINCIPAL ---
+\begin{document}
+
+% --- PORTADA / ENCABEZADO INSTITUCIONAL ---
+\begin{center}
+    {\Large\bfseries\sffamily\color{UsachNavy} UNIVERSIDAD DE SANTIAGO DE CHILE}\\[2pt]
+    {\small\sffamily\color{DarkGray} FACULTAD DE INGENIERÍA --- DEPARTAMENTO DE INGENIERÍA INFORMÁTICA}\\[12pt]
+    
+    {\Large\bfseries\sffamily\color{UsachOrange} ANEXO D: CLASIFICACIÓN ACM DE MALLAS CURRICULARES UNIVERSITARIAS}\\[4pt]
+    {\large\sffamily\color{UsachNavy} Proyecto: Método Computacional de Análisis Curricular de Ingeniería Informática en Chile}\\[10pt]
+    
+    \begin{tcolorbox}[colback=UsachNavy!5,colframe=UsachNavy,arc=3pt,boxrule=0.5pt]
+        \centering\small\sffamily
+        \textbf{Autor:} Fabián Ibarra Norambuena \quad|\quad 
+        \textbf{Institución:} Universidad de Santiago de Chile (USACH)\\[2pt]
+        \textbf{Comisión Evaluadora:} Prof. Pamela Landeros, Prof. Víctor Araya\\[2pt]
+        \textbf{Alcance del Corpus:} 16 Programas Universitarios | 746 Asignaturas Clasificadas | 23 Áreas Taxonómicas
+    \end{tcolorbox}
+\end{center}
+
+\vspace{5pt}
+
+% --- SECCIÓN 1: RESUMEN EJECUTIVO ---
+\section{\texorpdfstring{\sffamily\color{UsachNavy} Resumen Ejecutivo del Corpus Curricular Clasificado}{Resumen Ejecutivo del Corpus Curricular Clasificado}}
+
+El corpus curricular recopilado comprende \textbf{16 programas universitarios} de formación profesional en Computación e Informática en Chile (ciclos de ingeniería civil, ingeniería de ejecución y programas profesionales de régimen presencial y diurno/online), totalizando \textbf{746 asignaturas} analizadas y categorizadas bajo el estándar taxonómico internacional \textbf{ACM/IEEE-CS (CS2013 / CC2020)}.
+
+Este corpus presenta perfecta paridad y concordancia uno a uno con el conjunto de los 16 Perfiles de Egreso Declarados analizados en el trabajo de titulación. La Tabla~\ref{tab:resumen_programas} sintetiza los 16 programas catalogados, indicando su ID oficial, régimen de titulación y carga de asignaturas. La Tabla~\ref{tab:distribucion_acm} expone la distribución de frecuencias global en las 22 áreas ACM activas en el corpus nacional.
+
+\begin{small}
+\begin{longtable}{p{2.2cm} >{\raggedright\arraybackslash}p{3.5cm} >{\raggedright\arraybackslash}p{4.2cm} >{\raggedright\arraybackslash}p{2.6cm} c}
+\caption{Resumen de programas de estudio catalogados ($N=16$).} \label{tab:resumen_programas} \\
+\toprule
+\textbf{ID} & \textbf{Universidad} & \textbf{Carrera} & \textbf{Régimen / Duración} & \textbf{Nº Asig.} \\
+\midrule
+\endfirsthead
+\multicolumn{5}{l}{\small\textit{Continuación: Resumen de programas catalogados}} \\[3pt]
+\toprule
+\textbf{ID} & \textbf{Universidad} & \textbf{Carrera} & \textbf{Régimen / Duración} & \textbf{Nº Asig.} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\texttt{USACH\_01} & Universidad de Santiago de Chile & Ingeniería de Ejecución en Computación e Informática & Ejecución (8 Semestres / Diurno) & 42 \\
+\texttt{USACH\_02} & Universidad de Santiago de Chile & Ingeniería Civil en Informática & Civil (11 Semestres) & 58 \\
+\texttt{UCHILE\_03} & Universidad de Chile & Ingeniería Civil en Computación & Civil (11 Semestres) & 53 \\
+\texttt{UNAB\_04} & Universidad Andrés Bello & Ingeniería en Computación e Informática & Profesional (8 Semestres) & 40 \\
+\texttt{UMAG\_05} & Universidad de Magallanes & Ingeniería en Computación e Informática & Profesional (8 Semestres) & 40 \\
+\texttt{UTEM\_06} & Universidad Tecnológica Metropolitana & Ingeniería en Informática & Profesional (8 Semestres) & 43 \\
+\texttt{UDEC\_07} & Universidad de Concepción & Ingeniería Civil Informática & Civil (10 Semestres) & 53 \\
+\texttt{USM\_08} & Universidad Técnica Federico Santa María & Ingeniería Informática & Profesional (8 Semestres) & 41 \\
+\texttt{PUCV\_09} & Pontificia Universidad Católica de Valparaíso & Ingeniería Informática & Profesional (8 Semestres) & 43 \\
+\texttt{DUOC\_10} & Instituto Profesional Duoc UC & Ingeniería en Informática & Profesional (8 Semestres) & 49 \\
+\texttt{USS\_11} & Universidad San Sebastián & Ingeniería Civil en Informática & Civil (10 Semestres) & 49 \\
+\texttt{UST\_12} & Universidad Santo Tomás & Ingeniería Civil en Informática y Sistemas Inteligentes & Civil (11 Semestres) & 61 \\
+\texttt{UFRO\_13} & Universidad de La Frontera & Ingeniería Civil Informática & Civil (11 Semestres) & 56 \\
+\texttt{UBB\_14} & Universidad del Bío-Bío & Ingeniería de Ejecución en Computación e Informática & Ejecución (8 Semestres) & 45 \\
+\texttt{UTALCA\_15} & Universidad de Talca & Ingeniería Civil en Computación & Civil (10 Semestres) & 42 \\
+\texttt{UA\_16} & Universidad Autónoma de Chile & Ingeniería en Informática & Profesional Online (11 Trimestres) & 31 \\
+\midrule
+\multicolumn{4}{r}{\textbf{Total Global del Corpus (16 Programas Universitarios)}} & \textbf{746} \\
+\end{longtable}
+\end{small}
+
+\begin{small}
+\begin{longtable}{>{\raggedright\arraybackslash}p{6.8cm} c c c c}
+\caption{Distribución global de asignaturas por área de conocimiento ACM ($N=746$).} \label{tab:distribucion_acm} \\
+\toprule
+\textbf{Área de Conocimiento ACM} & \textbf{Cód.} & \textbf{Nº Asig.} & \textbf{\%} & \textbf{Presencia ($k/16$)} \\
+\midrule
+\endfirsthead
+\multicolumn{5}{l}{\small\textit{Continuación: Distribución global de áreas ACM}} \\[3pt]
+\toprule
+\textbf{Área de Conocimiento ACM} & \textbf{Cód.} & \textbf{Nº Asig.} & \textbf{\%} & \textbf{Presencia ($k/16$)} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+SOCIEDAD, ÉTICA Y PROFESIONALISMO & \textbf{SEP} & 97 & 13.00\% & 15/16 \\
+ELECTIVOS/TÓPICOS & \textbf{EL} & 72 & 9.65\% & 15/16 \\
+CIENCIAS EXACTAS & \textbf{CE} & 62 & 8.31\% & 13/16 \\
+FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS & \textbf{MS} & 59 & 7.91\% & 16/16 \\
+INGENIERÍA DE SOFTWARE & \textbf{SE} & 53 & 7.10\% & 16/16 \\
+GESTIÓN DE DATOS & \textbf{DM} & 49 & 6.57\% & 16/16 \\
+IDIOMAS & \textbf{FL} & 47 & 6.30\% & 13/16 \\
+CIENCIAS SOCIALES & \textbf{CS} & 46 & 6.17\% & 13/16 \\
+TRABAJO DE TITULACIÓN & \textbf{CP} & 37 & 4.96\% & 16/16 \\
+FUNDAMENTOS DEL DESARROLLO DE SOFTWARE & \textbf{SDF} & 33 & 4.42\% & 15/16 \\
+ALGORITMOS Y COMPLEJIDAD & \textbf{AL} & 32 & 4.29\% & 14/16 \\
+CIENCIAS BÁSICAS & \textbf{BS} & 29 & 3.89\% & 9/16 \\
+FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN & \textbf{PL} & 21 & 2.82\% & 13/16 \\
+REDES Y COMUNICACIONES & \textbf{NC} & 18 & 2.41\% & 12/16 \\
+ARQUITECTURA Y ORGANIZACIÓN DE COMPUTADORES & \textbf{AR} & 17 & 2.28\% & 13/16 \\
+SISTEMAS OPERATIVOS & \textbf{OS} & 15 & 2.01\% & 13/16 \\
+FUNDAMENTOS DE SISTEMAS & \textbf{SF} & 12 & 1.61\% & 10/16 \\
+INTELIGENCIA ARTIFICIAL & \textbf{AI} & 12 & 1.61\% & 10/16 \\
+SEGURIDAD INFORMÁTICA & \textbf{SEC} & 11 & 1.47\% & 10/16 \\
+INTERACCIÓN HUMANO COMPUTADOR & \textbf{HCI} & 9 & 1.21\% & 7/16 \\
+COMPUTACIÓN PARALELA Y DISTRIBUIDA & \textbf{PD} & 8 & 1.07\% & 7/16 \\
+DESARROLLO PARA PLATAFORMAS ESPECIALIZADAS & \textbf{SP} & 7 & 0.94\% & 5/16 \\
+\midrule
+\multicolumn{2}{r}{\textbf{Total de Asignaturas Clasificadas}} & \textbf{746} & \textbf{100.00\%} & \textbf{16/16} \\
+\end{longtable}
+\end{small}
+
+\vspace{5pt}
+
+% --- SECCIÓN 2: MARCO TAXONÓMICO ACM ---
+\section{\texorpdfstring{\sffamily\color{UsachNavy} Marco Taxonómico ACM/IEEE-CS (23 Áreas de Conocimiento)}{Marco Taxonómico ACM/IEEE-CS (23 Áreas de Conocimiento)}}
+
+La Tabla~\ref{tab:diccionario_23} detalla el diccionario taxonómico de 23 áreas de conocimiento según las directrices curriculares ACM/IEEE-CS (CS2013 / CC2020) adaptadas para el análisis comparativo del sistema de educación superior chileno.
+
+\begin{small}
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{p{0.9cm} >{\raggedright\arraybackslash}p{4.4cm} >{\raggedright\arraybackslash}p{4.0cm} >{\raggedright\arraybackslash}p{5.4cm}}
+\caption{Diccionario taxonómico unificado ACM/IEEE-CS de 23 áreas de conocimiento.} \label{tab:diccionario_23} \\
+\toprule
+\textbf{Cód.} & \textbf{Área Oficial (Español)} & \textbf{Canonical Name (ACM)} & \textbf{Alcance Temático Sintético} \\
+\midrule
+\endfirsthead
+\multicolumn{4}{l}{\small\textit{Continuación: Diccionario taxonómico unificado ACM/IEEE-CS}} \\[3pt]
+\toprule
+\textbf{Cód.} & \textbf{Área Oficial (Español)} & \textbf{Canonical Name (ACM)} & \textbf{Alcance Temático Sintético} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\textbf{AL} & ALGORITMOS Y COMPLEJIDAD & \textit{Algorithms and Complexity} & Diseño, análisis asintótico y cotas de complejidad. Estructuras de datos (árboles, grafos, tablas hash), técnicas algorítmicas, teoría de la computación, autómatas y NP-completitud. \\
+\textbf{AR} & ARQUITECTURA Y ORGANIZACIÓN DE COMPUTADORES & \textit{Architecture and Organization} & Organización funcional del hardware, lógica binaria, diseño de ALU, repertorio de instrucciones (ISA), pipelining, jerarquía de memoria (caché, virtual) e interfaces de E/S. \\
+\textbf{BS} & CIENCIAS BÁSICAS & \textit{Basic Sciences (Física y Ciencias Naturales)} & Fundamentos del método científico y física general: mecánica newtoniana, electromagnetismo, termodinámica, ondas y química general para ingeniería. \\
+\textbf{CE} & CIENCIAS EXACTAS & \textit{Exact Sciences (Cálculo y Álgebra)} & Cálculo diferencial e integral (una y varias variables), álgebra superior y lineal, geometría analítica y física matemática continua. \\
+\textbf{CS} & CIENCIAS SOCIALES & \textit{Social Sciences, Economics and Management} & Economía, finanzas, contabilidad, gestión de empresas, teoría organizacional, innovación, formulación de negocios y habilidades socio-humanistas. \\
+\textbf{PD} & COMPUTACIÓN PARALELA Y DISTRIBUIDA & \textit{Parallel and Distributed Computing} & Modelos concurrentes, memoria compartida y distribuida, paso de mensajes (MPI, OpenMP), arquitecturas multi-core, computación en la nube (cloud) y clusters. \\
+\textbf{SP} & DESARROLLO PARA PLATAFORMAS ESPECIALIZADAS & \textit{Specialized Platform Development} & Desarrollo para dispositivos móviles (iOS/Android), sistemas embebidos, Internet de las Cosas (IoT) y entornos web full-stack. \\
+\textbf{EL} & ELECTIVOS/TÓPICOS & \textit{Electives and Advanced Topics} & Asignaturas optativas de profundización temática y tecnologías emergentes de frontera para especialización profesional flexible. \\
+\textbf{PL} & FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN & \textit{Programming Languages} & Sintaxis, semántica y sistemas de tipos. Paradigmas de programación (orientado a objetos, funcional, reactivo), diseño de compiladores e intérpretes. \\
+\textbf{SF} & FUNDAMENTOS DE SISTEMAS & \textit{Systems Fundamentals} & Visión integradora del sistema computacional: articulación entre hardware, sistemas operativos, redes y aplicaciones, con métricas de desempeño. \\
+\textbf{SDF} & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE & \textit{Software Development Fundamentals} & Programación elemental: algoritmos iniciales, estructuras de control, modularidad, diseño procedimental y orientado a objetos, testing básico. \\
+\textbf{MS} & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS & \textit{Mathematical and Statistical Foundations} & Matemáticas discretas, lógica simbólica, probabilidades, estadística inferencial/computacional, modelos estocásticos, optimización y simulación. \\
+\textbf{DM} & GESTIÓN DE DATOS & \textit{Data Management} & Modelado relacional y NoSQL, álgebra relacional, SQL, diseño de bases de datos, transacciones ACID, análisis masivo de datos y Big Data. \\
+\textbf{GV} & GRÁFICOS COMPUTACIONALES Y TÉCNICAS INTERACTIVAS & \textit{Graphics and Interactive Techniques} & Modelado 2D/3D, proyección geométrica, renderizado, animación por computador, visualización científica e interfaces gráficas tridimensionales. \\
+\textbf{FL} & IDIOMAS & \textit{Foreign Languages (Inglés Técnico)} & Inglés técnico e instrumental: comprensión lectora de documentación tecnológica, redacción técnica y comunicación oral/escrita internacional. \\
+\textbf{SE} & INGENIERÍA DE SOFTWARE & \textit{Software Engineering} & Metodologías de desarrollo sistemático (Scrum, Agile), ingeniería de requerimientos, diseño arquitectónico, gestión de proyectos TI y QA. \\
+\textbf{AI} & INTELIGENCIA ARTIFICIAL & \textit{Artificial Intelligence} & Sistemas inteligentes, búsqueda heurística, aprendizaje automático (Machine Learning), visión por computador, procesamiento de lenguaje natural y redes neuronales. \\
+\textbf{HCI} & INTERACCIÓN HUMANO COMPUTADOR & \textit{Human-Computer Interaction} & Diseño centrado en el usuario, interfaces gráficas (UI), experiencia de usuario (UX), prototipado interactivo y evaluación de usabilidad. \\
+\textbf{NC} & REDES Y COMUNICACIONES & \textit{Networking and Communications} & Modelos OSI y TCP/IP, direccionamiento y enrutamiento, protocolos de transporte, transmisión de datos, telemática e interconexión de redes. \\
+\textbf{SEC} & SEGURIDAD INFORMÁTICA & \textit{Information Assurance and Security} & Ciberseguridad, criptografía, autenticación, control de acceso, gestión de riesgos de seguridad, análisis de vulnerabilidades y defensa de redes. \\
+\textbf{OS} & SISTEMAS OPERATIVOS & \textit{Operating Systems} & Administración y planificación de procesos, concurrencia, sincronización (semáforos, bloqueos), gestión de memoria, sistemas de archivos y drivers. \\
+\textbf{SEP} & SOCIEDAD, ÉTICA Y PROFESIONALISMO & \textit{Social Issues and Professional Practice} & Ética en ingeniería, impacto socioambiental de la tecnología, propiedad intelectual, legislación informática, gobernanza TI y responsabilidad profesional. \\
+\textbf{CP} & TRABAJO DE TITULACIÓN & \textit{Capstone Project and Practical Training} & Hito terminal de titulación: memoria de título, proyecto de grado o capstone de ingeniería, seminario de investigación y prácticas profesionales. \\
+\end{longtable}
+\end{small}
+
+\newpage
+
+% --- SECCIÓN 3: MALLAS CURRICULARES Y CLASIFICACIÓN ACM POR UNIVERSIDAD ---
+\renewcommand{\arraystretch}{0.92}
+\section{\texorpdfstring{\sffamily\color{UsachNavy} Mallas Curriculares y Clasificación ACM por Universidad}{Mallas Curriculares y Clasificación ACM por Universidad}}
+
+A continuación se presentan las mallas curriculares de los \textbf{16 programas de estudio}, detallando de manera continua para cada asignatura su nivel lectivo (Semestre o Trimestre) y su clasificación oficial en el marco taxonómico ACM/IEEE-CS.
+
+\subsection[USACH --- Ingeniería de Ejecución en Computación e Informática]{\raggedright Universidad de Santiago de Chile (USACH) --- Ingeniería de Ejecución en Computación e Informática}
+
+\noindent\textbf{Plan de Estudio:} Ejecución (8 Semestres / Diurno) \hfill \textbf{Total Asignaturas:} 42 materias
+
+\vspace{4pt}
+
+\begin{small}
+\begin{longtable}{c >{\raggedright\arraybackslash}p{8.5cm} >{\raggedright\arraybackslash}p{5.5cm}}
+\caption{Malla curricular y clasificación ACM: USACH (Ingeniería de Ejecución en Computación e Informática).} \label{tab:USACH01} \\
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Continuación: Malla curricular y clasificación ACM --- USACH}} \\[3pt]
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\small\textit{Continúa en la siguiente página...}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+S1 & CÁLCULO I PARA INGENIERÍA & CIENCIAS EXACTAS \\
+S1 & ÁLGEBRA I PARA INGENIERÍA & CIENCIAS EXACTAS \\
+S1 & FÍSICA I PARA INGENIERÍA & CIENCIAS EXACTAS \\
+S1 & INTRODUCCIÓN A LA INGENIERÍA & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S1 & MÉTODOS DE ESTUDIO & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S1 & TALLER DE DESARROLLO PERSONAL E INTEGRAL & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S2 & CÁLCULO II PARA INGENIERÍA & CIENCIAS EXACTAS \\
+S2 & ÁLGEBRA II PARA INGENIERÍA & CIENCIAS EXACTAS \\
+S2 & FÍSICA II PARA INGENIERÍA & CIENCIAS EXACTAS \\
+S2 & FUNDAMENTOS DE COMPUTACIÓN Y PROGRAMACIÓN & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S2 & QUÍMICA GENERAL & CIENCIAS BÁSICAS \\
+S2 & INTRODUCCIÓN A LA INGENIERÍA INFORMÁTICA & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S3 & ELECTRICIDAD Y MAGNETISMO PARA INGENIERÍA & CIENCIAS EXACTAS \\
+S3 & COMUNICACIÓN EFECTIVA & CIENCIAS SOCIALES \\
+S3 & INGLÉS I & IDIOMAS \\
+S3 & ANÁLISIS ESTADÍSTICO PARA INGENIERÍA & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S3 & ECUACIONES DIFERENCIALES Y MÉTODOS NUMÉRICOS PARA INGENIERÍA & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S3 & MÉTODOS DE PROGAMACIÓN & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S4 & FUNDAMENTOS DE ECONOMÍA & CIENCIAS SOCIALES \\
+S4 & INGLÉS II & IDIOMAS \\
+S4 & INGENIERÍA DE SISTEMAS & FUNDAMENTOS DE SISTEMAS \\
+S4 & ESTRUCTURA DE COMPUTADORES & ARQUITECTURA Y ORGANIZACIÓN DE COMPUTADORES \\
+S4 & PARADIGMAS DE PROGRAMACIÓN & FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN \\
+S4 & ANÁLISIS DE ALGORITMOS Y ESTRUCTURA DE DATOS & ALGORITMOS Y COMPLEJIDAD \\
+S5 & EVALUACIÓN DE PROYECTOS INFORMÁTICOS & INGENIERÍA DE SOFTWARE \\
+S5 & DISEÑO DE BASE DE DATOS & GESTIÓN DE DATOS \\
+S5 & ORGANIZACIÓN DE COMPUTADORES & ARQUITECTURA Y ORGANIZACIÓN DE COMPUTADORES \\
+S5 & FUNDAMENTOS DE INGENIERÍA DE SOFTWARE & INGENIERÍA DE SOFTWARE \\
+S5 & INFORMÁTICA Y SOCIEDAD & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S5 & INGLÉS III & IDIOMAS \\
+S6 & ADMINISTRACIÓN DE PROYECTOS INFORMÁTICOS & INGENIERÍA DE SOFTWARE \\
+S6 & TALLER DE BASE DE DATOS & GESTIÓN DE DATOS \\
+S6 & SISTEMAS OPERATIVOS & SISTEMAS OPERATIVOS \\
+S6 & TÉCNICAS DE INGENIERÍA DE SOFTWARE & INGENIERÍA DE SOFTWARE \\
+S6 & REDES COMPUTACIONALES & REDES Y COMUNICACIONES \\
+S6 & INGLÉS IV & IDIOMAS \\
+S7 & PROYECTO DE INGENIERÍA DE SOFTWARE & INGENIERÍA DE SOFTWARE \\
+S7 & TÓPICOS DE ESPECIALIDAD I & ELECTIVOS/TÓPICOS \\
+S7 & TÓPICOS DE ESPECIALIDAD II & ELECTIVOS/TÓPICOS \\
+S7 & TÓPICOS DE ESPECIALIDAD III & ELECTIVOS/TÓPICOS \\
+S7 & SEMINARIO DE COMPUTACIÓN E INFORMÁTICA & TRABAJO DE TITULACIÓN \\
+S8 & TRABAJO DE TITULACIÓN & TRABAJO DE TITULACIÓN \\
+\end{longtable}
+\end{small}
+
+\vspace{18pt}
+\subsection[USACH --- Ingeniería Civil en Informática]{\raggedright Universidad de Santiago de Chile (USACH) --- Ingeniería Civil en Informática}
+
+\noindent\textbf{Plan de Estudio:} Civil (11 Semestres) \hfill \textbf{Total Asignaturas:} 58 materias
+
+\vspace{4pt}
+
+\begin{small}
+\begin{longtable}{c >{\raggedright\arraybackslash}p{8.5cm} >{\raggedright\arraybackslash}p{5.5cm}}
+\caption{Malla curricular y clasificación ACM: USACH (Ingeniería Civil en Informática).} \label{tab:USACH02} \\
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Continuación: Malla curricular y clasificación ACM --- USACH}} \\[3pt]
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\small\textit{Continúa en la siguiente página...}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+S1 & CÁLCULO I PARA INGENIERÍA & CIENCIAS EXACTAS \\
+S1 & ÁLGEBRA I PARA INGENIERÍA & CIENCIAS EXACTAS \\
+S1 & FÍSICA I PARA INGENIERÍA & CIENCIAS EXACTAS \\
+S1 & INGENIERÍA Y SOSTENIBILIDAD & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S1 & INTRODUCCIÓN AL DISEÑO EN INGENIERÍA & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S1 & FUNDAMENTOS DE COMPUTACIÓN & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S2 & CÁLCULO II PARA INGENIERÍA & CIENCIAS EXACTAS \\
+S2 & ÁLGEBRA II PARA INGENIERÍA & CIENCIAS EXACTAS \\
+S2 & FÍSICA II PARA INGENIERÍA & CIENCIAS EXACTAS \\
+S2 & INTRODUCCIÓN A LA INGENIERÍA INFORMÁTICA & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S2 & FUNDAMENTOS DE PROGRAMACIÓN PARA INGENIERÍA & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S2 & INGLÉS I & IDIOMAS \\
+S3 & CÁLCULO III PARA INGENIERÍA & CIENCIAS EXACTAS \\
+S3 & ESTRUCTURA DE DATOS & ALGORITMOS Y COMPLEJIDAD \\
+S3 & ELECTRICIDAD, MAGNETISMO Y ONDAS & CIENCIAS EXACTAS \\
+S3 & DISEÑO DE ALGORITMOS & ALGORITMOS Y COMPLEJIDAD \\
+S3 & FUNDAMENTOS DE ECONOMÍA PARA INGENIERÍA & CIENCIAS SOCIALES \\
+S3 & INGLÉS II & IDIOMAS \\
+S4 & ECUACIONES DIFERENCIALES Y MÉTODOS NUMÉRICOS & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S4 & DISEÑO DE BASES DE DATOS & GESTIÓN DE DATOS \\
+S4 & ARQUITECTURA DE COMPUTADORES & ARQUITECTURA Y ORGANIZACIÓN DE COMPUTADORES \\
+S4 & PARADIGMAS DE PROGRAMACIÓN & FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN \\
+S4 & TALLER DE DISEÑO EN INGENIERÍA & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S4 & INGLÉS III & IDIOMAS \\
+S5 & ESTADÍSTICA COMPUTACIONAL & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S5 & TEORÍA DE LA COMPUTACIÓN & ALGORITMOS Y COMPLEJIDAD \\
+S5 & SISTEMAS OPERATIVOS & SISTEMAS OPERATIVOS \\
+S5 & FUNDAMENTOS DE INGENIERÍA DE SOFTWARE & INGENIERÍA DE SOFTWARE \\
+S5 & TALLER DE PROGRAMACIÓN & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S5 & INGLÉS IV & IDIOMAS \\
+S6 & ESTADÍSTICA INFERENCIAL & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S6 & BASES DE DATOS AVANZADAS & GESTIÓN DE DATOS \\
+S6 & PROCESAMIENTO DE SEÑALES E IMÁGENES & INTELIGENCIA ARTIFICIAL \\
+S6 & TÉCNICAS DE INGENIERÍA DE SOFTWARE & INGENIERÍA DE SOFTWARE \\
+S6 & EVALUACIÓN DE PROYECTOS & INGENIERÍA DE SOFTWARE \\
+S6 & FORMACIÓN INTEGRAL I & CIENCIAS SOCIALES \\
+S7 & MODELOS Y SIMULACIÓN & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S7 & MÉTODOS DE OPTIMIZACIÓN & ALGORITMOS Y COMPLEJIDAD \\
+S7 & REDES DE COMUNICACIÓN & REDES Y COMUNICACIONES \\
+S7 & GESTIÓN DE PROYECTOS TI & INGENIERÍA DE SOFTWARE \\
+S7 & INNOVACIÓN Y EMPRENDIMIENTO & CIENCIAS SOCIALES \\
+S7 & FORMACIÓN INTEGRAL II & CIENCIAS SOCIALES \\
+S8 & ANÁLISIS DE DATOS & GESTIÓN DE DATOS \\
+S8 & CIBERSEGURIDAD & SEGURIDAD INFORMÁTICA \\
+S8 & SISTEMAS DISTRIBUÍDOS Y PARALELOS & COMPUTACIÓN PARALELA Y DISTRIBUIDA \\
+S8 & GESTIÓN DE SERVICIOS TI & INGENIERÍA DE SOFTWARE \\
+S8 & PROYECTO DE INGENIERÍA DE SOFTWARE & INGENIERÍA DE SOFTWARE \\
+S9 & APRENDIZAJE AUTOMÁTICO & INTELIGENCIA ARTIFICIAL \\
+S9 & TÓPICO DE ESPECIALIDAD I & ELECTIVOS/TÓPICOS \\
+S9 & TÓPICO DE ESPECIALIDAD II & ELECTIVOS/TÓPICOS \\
+S9 & GOBERNANZA Y GESTIÓN TI & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S9 & ELECTIVO I & ELECTIVOS/TÓPICOS \\
+S10 & SEMINARIO DE INFORMÁTICA & TRABAJO DE TITULACIÓN \\
+S10 & TÓPICO DE ESPECIALIDAD III & ELECTIVOS/TÓPICOS \\
+S10 & TÓPICO DE ESPECIALIDAD IV & ELECTIVOS/TÓPICOS \\
+S10 & ELECTIVO INTERDISCIPLINARIO & ELECTIVOS/TÓPICOS \\
+S10 & ELECTIVO II & ELECTIVOS/TÓPICOS \\
+S11 & TRABAJO DE TITULACIÓN & TRABAJO DE TITULACIÓN \\
+\end{longtable}
+\end{small}
+
+\vspace{18pt}
+\subsection[UCHILE --- Ingeniería Civil en Computación]{\raggedright Universidad de Chile (UCHILE) --- Ingeniería Civil en Computación}
+
+\noindent\textbf{Plan de Estudio:} Civil (11 Semestres) \hfill \textbf{Total Asignaturas:} 53 materias
+
+\vspace{4pt}
+
+\begin{small}
+\begin{longtable}{c >{\raggedright\arraybackslash}p{8.5cm} >{\raggedright\arraybackslash}p{5.5cm}}
+\caption{Malla curricular y clasificación ACM: UCHILE (Ingeniería Civil en Computación).} \label{tab:UCHILE03} \\
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Continuación: Malla curricular y clasificación ACM --- UCHILE}} \\[3pt]
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\small\textit{Continúa en la siguiente página...}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+S1 & INTRODUCCIÓN AL CÁLCULO & CIENCIAS EXACTAS \\
+S1 & INTRODUCCIÓN AL ÁLGEBRA & CIENCIAS EXACTAS \\
+S1 & INTRODUCCIÓN A LA FÍSICA CLÁSICA & CIENCIAS EXACTAS \\
+S1 & HERRAMIENTAS COMPUTACIONALES PARA INGENIERÍA Y CIENCIAS & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S1 & DESAFÍOS DE INNOVACIÓN EN INGENIERÍA Y CIENCIAS & CIENCIAS SOCIALES \\
+S1 & APLICACIONES DE LA BIOLOGÍA A LA INGENIERÍA Y CIENCIAS & CIENCIAS BÁSICAS \\
+S2 & CÁLCULO DIFERENCIAL E INTEGRAL & CIENCIAS EXACTAS \\
+S2 & ÁLGEBRA LINEAL & CIENCIAS EXACTAS \\
+S2 & INTRODUCCIÓN A LA FÍSICA MODERNA & CIENCIAS EXACTAS \\
+S2 & INTRODUCCIÓN A LA PROGRAMACIÓN & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S2 & CURSOS DE FORMACIÓN GENERAL, HUMANISTAS, IDIOMAS Y DEPORTES & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S3 & CÁLCULO EN VARIAS VARIABLES & CIENCIAS EXACTAS \\
+S3 & ECUACIONES DIFERENCIALES ORDINARIAS & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S3 & METODOS EXPERIMENTALES & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S3 & MECÁNICA & CIENCIAS BÁSICAS \\
+S3 & QUÍMICA & CIENCIAS BÁSICAS \\
+S4 & ECONOMÍA & FUNDAMENTOS DE SISTEMAS \\
+S4 & CÁLCULO AVANZADO Y APLICACIONES & CIENCIAS EXACTAS \\
+S4 & ELECTROMAGNETISMO & CIENCIAS BÁSICAS \\
+S4 & TERMODINÁMICA / TERMODINÁMICA QUÍMICA & CIENCIAS BÁSICAS \\
+S4 & MÓDULO INTERDISCIPLINARIO & CIENCIAS SOCIALES \\
+S4 & CURSOS DE FORMACIÓN GENERAL, HUMANISTAS, IDIOMAS Y DEPORTES & CIENCIAS SOCIALES \\
+S5 & PROBABILIDADES Y ESTADÍSTICA & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S5 & MODELACIÓN Y COMPUTACIÓN GRÁFICA PARA INGENIEROS & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S5 & ALGORITMOS Y ESTRUCTURAS DE DATOS & ALGORITMOS Y COMPLEJIDAD \\
+S5 & MATEMÁTICAS DISCRETAS PARA LA COMPUTACIÓN & FUNDAMENTOS DE SISTEMAS \\
+S5 & FORMACIÓN INTEGRAL & CIENCIAS SOCIALES \\
+S6 & BASES DE DATOS & GESTIÓN DE DATOS \\
+S6 & METODOLOGÍAS DE DISEÑO Y PROGRAMACIÓN & FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN \\
+S6 & TEORÍA DE LA COMPUTACIÓN & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S6 & PROGRAMACIÓN DE SOFTWARE DE SISTEMAS & SISTEMAS OPERATIVOS \\
+S6 & ELECTIVO & ELECTIVOS/TÓPICOS \\
+S7 & MINERÍA DE DATOS & GESTIÓN DE DATOS \\
+S7 & INGENIERÍA DE SOFTWARE & INGENIERÍA DE SOFTWARE \\
+S7 & DISEÑO Y ANÁLISIS DE ALGORITMOS & GESTIÓN DE DATOS \\
+S7 & SISTEMAS OPERATIVOS & SISTEMAS OPERATIVOS \\
+S7 & ELECTIVO & ELECTIVOS/TÓPICOS \\
+S7 & PRÁCTICA PROFESIONAL I & COMPUTACIÓN PARALELA Y DISTRIBUIDA \\
+S8 & FORMULACIÓN, EVALUACIÓN Y GESTIÓN DE PROYECTOS & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S8 & LENGUAJES DE PROGRAMACIÓN & FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN \\
+S8 & REDES & ALGORITMOS Y COMPLEJIDAD \\
+S8 & ELECTIVOS & ELECTIVOS/TÓPICOS \\
+S8 & EXAMEN DE SUFICIENCIA EN INGLÉS I & IDIOMAS \\
+S9 & ELECTIVOS DE ESPECIALIDAD & ELECTIVOS/TÓPICOS \\
+S9 & NÚCLEO GESTIÓN PARA INGENIEROS & GESTIÓN DE DATOS \\
+S9 & FORMACIÓN INTEGRAL DE ESPECIALIDAD & CIENCIAS SOCIALES \\
+S9 & PRÁCTICA PROFESIONAL II & ELECTIVOS/TÓPICOS \\
+S10 & ELECTIVOS DE ESPECIALIDAD & IDIOMAS \\
+S10 & PROYECTO DE SOFTWARE & INGENIERÍA DE SOFTWARE \\
+S10 & INTRODUCCIÓN AL TRABAJO DE TÍTULO & TRABAJO DE TITULACIÓN \\
+S11 & ELECTIVO DE ESPECIALIDAD & ELECTIVOS/TÓPICOS \\
+S11 & TRABAJO DE TÍTULO & TRABAJO DE TITULACIÓN \\
+S11 & EXAMEN DE SUFICIENCIA EN INGLÉS II & IDIOMAS \\
+\end{longtable}
+\end{small}
+
+\vspace{18pt}
+\subsection[UNAB --- Ingeniería en Computación e Informática]{\raggedright Universidad Andrés Bello (UNAB) --- Ingeniería en Computación e Informática}
+
+\noindent\textbf{Plan de Estudio:} Profesional (8 Semestres) \hfill \textbf{Total Asignaturas:} 40 materias
+
+\vspace{4pt}
+
+\begin{small}
+\begin{longtable}{c >{\raggedright\arraybackslash}p{8.5cm} >{\raggedright\arraybackslash}p{5.5cm}}
+\caption{Malla curricular y clasificación ACM: UNAB (Ingeniería en Computación e Informática).} \label{tab:UNAB04} \\
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Continuación: Malla curricular y clasificación ACM --- UNAB}} \\[3pt]
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\small\textit{Continúa en la siguiente página...}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+S1 & Introducción a las Matemáticas & CIENCIAS EXACTAS \\
+S1 & Física General & CIENCIAS EXACTAS \\
+S1 & Introducción a la Programación & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S1 & INTRODUCCIÓN A LA INGENIERÍA & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S2 & Base de Datos & GESTIÓN DE DATOS \\
+S2 & Física Experimental & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S2 & Cálculo Diferencial & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S2 & Taller de Innovación y emprendimiento I & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S2 & Habilidades Comunicativas & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S3 & Cálculo Integral & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S3 & Mecánica & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S3 & Compliance \& Accountability & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S3 & Taller de Innovación y Emprendimiento II & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S3 & Inglés I & IDIOMAS \\
+S4 & Métodos Cuantitativos & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S4 & Tecnologías Disruptivas & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S4 & Práctica I & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S4 & Algoritmo y Estructura de Datos & ALGORITMOS Y COMPLEJIDAD \\
+S4 & Inglés II & IDIOMAS \\
+S5 & Minería de Datos & GESTIÓN DE DATOS \\
+S5 & Disrupción Empresarial & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S5 & Conectividad y Soluciones Moviles & REDES Y COMUNICACIONES \\
+S5 & Paradigmas de Programación & INGENIERÍA DE SOFTWARE \\
+S5 & Inglés III & IDIOMAS \\
+S6 & Gestión de la Transformación Digital & GESTIÓN DE DATOS \\
+S6 & Desafío Tecnológico & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S6 & Ingeniería de Software I & INGENIERÍA DE SOFTWARE \\
+S6 & Desarrollo Web y Móvil & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S6 & Taller de Innovación y Emprendimiento III & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S6 & Inglés IV & IDIOMAS \\
+S7 & Portafolio de Proyectos & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S7 & Tópico de Especialidad I & ELECTIVOS/TÓPICOS \\
+S7 & Tópico de Especialidad II & ELECTIVOS/TÓPICOS \\
+S7 & Ingeniería de Software II & INGENIERÍA DE SOFTWARE \\
+S7 & Infraestructura TI & ARQUITECTURA Y ORGANIZACIÓN DE COMPUTADORES \\
+S7 & Responsabilidad Social & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S8 & Seminario en Licenciatura en Ingeniería & ALGORITMOS Y COMPLEJIDAD \\
+S8 & Ciberseguridad & SISTEMAS OPERATIVOS \\
+S8 & Práctica II & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S8 & Proyecto de título & TRABAJO DE TITULACIÓN \\
+\end{longtable}
+\end{small}
+
+\vspace{18pt}
+\subsection[UMAG --- Ingeniería en Computación e Informática]{\raggedright Universidad de Magallanes (UMAG) --- Ingeniería en Computación e Informática}
+
+\noindent\textbf{Plan de Estudio:} Profesional (8 Semestres) \hfill \textbf{Total Asignaturas:} 40 materias
+
+\vspace{4pt}
+
+\begin{small}
+\begin{longtable}{c >{\raggedright\arraybackslash}p{8.5cm} >{\raggedright\arraybackslash}p{5.5cm}}
+\caption{Malla curricular y clasificación ACM: UMAG (Ingeniería en Computación e Informática).} \label{tab:UMAG05} \\
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Continuación: Malla curricular y clasificación ACM --- UMAG}} \\[3pt]
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\small\textit{Continúa en la siguiente página...}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+S1 & MATEMÁTICA GENERAL & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S1 & COMPUTACIÓN & ALGORITMOS Y COMPLEJIDAD \\
+S1 & TALLER DE COMUNICACIONES & CIENCIAS SOCIALES \\
+S1 & QUÍMICA & CIENCIAS BÁSICAS \\
+S1 & ORIENTACIÓN PROFESIONAL & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S1 & DEPORTES & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S2 & MATEMÁTICA APLICADA I & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S2 & FÍSICA GENERAL & CIENCIAS EXACTAS \\
+S2 & ESTRUCTURA DE COMPUTADORES & ARQUITECTURA Y ORGANIZACIÓN DE COMPUTADORES \\
+S2 & CONTROL DE RIESGO OPERACIONAL & GESTIÓN DE DATOS \\
+S2 & PROGRAMACIÓN I & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S3 & MATEMÁTICA APLICADA II & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S3 & INGLÉS TÉCNICO & IDIOMAS \\
+S3 & BASE DE DATOS I & GESTIÓN DE DATOS \\
+S3 & SISTEMAS OPERATIVOS & SISTEMAS OPERATIVOS \\
+S3 & PROGRAMACIÓN II & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S4 & MATEMÁTICA PARA CIENCIAS DE LA COMPUTACIÓN & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S4 & DESARROLLO DE SISTEMAS DE INFORMACIÓN & FUNDAMENTOS DE SISTEMAS \\
+S4 & BASE DE DATOS II & GESTIÓN DE DATOS \\
+S4 & REDES DE COMPUTADORES & REDES Y COMUNICACIONES \\
+S4 & HERRAMIENTAS DE PROGRAMACIÓN & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S4 & ESTRUCTURA DE DATOS & ALGORITMOS Y COMPLEJIDAD \\
+S5 & TÓPICOS I & ELECTIVOS/TÓPICOS \\
+S5 & TÓPICOS II & ELECTIVOS/TÓPICOS \\
+S5 & TÓPICOS III & ELECTIVOS/TÓPICOS \\
+S5 & PROGRAMACIÓN AVANZADA & FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN \\
+S5 & DISEÑO DE ALGORITMOS & ALGORITMOS Y COMPLEJIDAD \\
+S5 & ECONOMÍA Y ADMINISTRACIÓN DE EMPRESAS & CIENCIAS SOCIALES \\
+S6 & DECISIONES ECONÓMICAS & CIENCIAS SOCIALES \\
+S6 & INTERFAZ DE USUARIOS & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S6 & COMPILADORES & FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN \\
+S6 & TÓPICOS C & ELECTIVOS/TÓPICOS \\
+S7 & TÓPICOS A & ELECTIVOS/TÓPICOS \\
+S7 & TÓPICOS B & ELECTIVOS/TÓPICOS \\
+S7 & TÓPICOS D & ELECTIVOS/TÓPICOS \\
+S7 & INGLÉS CONVERSACIONAL & IDIOMAS \\
+S7 & SEMINARIO PROFESIONAL & TRABAJO DE TITULACIÓN \\
+S7 & INGENIERÍA DE SOFTWARE & INGENIERÍA DE SOFTWARE \\
+S8 & TÉCNICAS DE LIDERAZGO SITUACIONAL & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S8 & PROYECTO DE ESPECIALIDAD & TRABAJO DE TITULACIÓN \\
+\end{longtable}
+\end{small}
+
+\vspace{18pt}
+\subsection[UTEM --- Ingeniería en Informática]{\raggedright Universidad Tecnológica Metropolitana (UTEM) --- Ingeniería en Informática}
+
+\noindent\textbf{Plan de Estudio:} Profesional (8 Semestres) \hfill \textbf{Total Asignaturas:} 43 materias
+
+\vspace{4pt}
+
+\begin{small}
+\begin{longtable}{c >{\raggedright\arraybackslash}p{8.5cm} >{\raggedright\arraybackslash}p{5.5cm}}
+\caption{Malla curricular y clasificación ACM: UTEM (Ingeniería en Informática).} \label{tab:UTEM06} \\
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Continuación: Malla curricular y clasificación ACM --- UTEM}} \\[3pt]
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\small\textit{Continúa en la siguiente página...}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+S1 & Habilidades de Razonamiento Lógico & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S1 & Taller de Matemáticas & CIENCIAS EXACTAS \\
+S1 & Taller de Ciencias y Tecnología & CIENCIAS BÁSICAS \\
+S1 & Introducción a la Ingeniería en Informática & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S1 & Desing Trinking & INTERACCIÓN HUMANO COMPUTADOR \\
+S1 & Algoritmos y Programación & ALGORITMOS Y COMPLEJIDAD \\
+S2 & Habilidades de Trabajo Académico & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S2 & Cálculo Diferencial & CIENCIAS EXACTAS \\
+S2 & Álgebra Clásica & CIENCIAS EXACTAS \\
+S2 & Mecánica Clásica & CIENCIAS EXACTAS \\
+S2 & Estructura de Datos & ALGORITMOS Y COMPLEJIDAD \\
+S2 & Electivo de Formación General & ELECTIVOS/TÓPICOS \\
+S3 & Cálculo Integral & CIENCIAS EXACTAS \\
+S3 & Álgebra Superior & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S3 & Electromagnetismo & CIENCIAS EXACTAS \\
+S3 & Base de Datos & GESTIÓN DE DATOS \\
+S3 & Lenguaje de Programación & FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN \\
+S4 & Estadísticas y Probabilidad & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S4 & Ingeniería Ambiental & CIENCIAS SOCIALES \\
+S4 & Taller de Principios de Sustentabilidad & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S4 & Grafos y Lenguajes Formales & ALGORITMOS Y COMPLEJIDAD \\
+S4 & Sistemas de Información & GESTIÓN DE DATOS \\
+S4 & Arquitectura de Computadores & ARQUITECTURA Y ORGANIZACIÓN DE COMPUTADORES \\
+S5 & Circuitos Eléctricos & CIENCIAS BÁSICAS \\
+S5 & Principios de Economía & CIENCIAS SOCIALES \\
+S5 & Ingles I & IDIOMAS \\
+S5 & Sistemas Operativos & SISTEMAS OPERATIVOS \\
+S5 & Ingeniería de Software & INGENIERÍA DE SOFTWARE \\
+S6 & Ingles II & IDIOMAS \\
+S6 & Fundamentos de Data Science & INTELIGENCIA ARTIFICIAL \\
+S6 & Ciberseguridad & SEGURIDAD INFORMÁTICA \\
+S6 & Evaluación de Proyectos Informáticos & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S6 & Ingeniería de Software & INGENIERÍA DE SOFTWARE \\
+S6 & Redes y Comunicación de Datos & REDES Y COMUNICACIONES \\
+S7 & Gestión de Proyectos Informáticos & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S7 & Computación en la Nube & COMPUTACIÓN PARALELA Y DISTRIBUIDA \\
+S7 & Computación Web y Móvil & DESARROLLO PARA PLATAFORMAS ESPECIALIZADAS \\
+S7 & Electivo de Formación Especializada I & ELECTIVOS/TÓPICOS \\
+S7 & Electivo de Formación Especializada II & ELECTIVOS/TÓPICOS \\
+S7 & Trabajo de Titulo I & TRABAJO DE TITULACIÓN \\
+S8 & Taller de Innovación y Emprendimiento & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S8 & Trabajo de Titulo II & TRABAJO DE TITULACIÓN \\
+S8 & Practica Profesional & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+\end{longtable}
+\end{small}
+
+\vspace{18pt}
+\subsection[UDEC --- Ingeniería Civil Informática]{\raggedright Universidad de Concepción (UDEC) --- Ingeniería Civil Informática}
+
+\noindent\textbf{Plan de Estudio:} Civil (10 Semestres) \hfill \textbf{Total Asignaturas:} 53 materias
+
+\vspace{4pt}
+
+\begin{small}
+\begin{longtable}{c >{\raggedright\arraybackslash}p{8.5cm} >{\raggedright\arraybackslash}p{5.5cm}}
+\caption{Malla curricular y clasificación ACM: UDEC (Ingeniería Civil Informática).} \label{tab:UDEC07} \\
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Continuación: Malla curricular y clasificación ACM --- UDEC}} \\[3pt]
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\small\textit{Continúa en la siguiente página...}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+S1 & Fisica 1 & CIENCIAS EXACTAS \\
+S1 & Algebra 1 & CIENCIAS EXACTAS \\
+S1 & Calculo 1 & CIENCIAS EXACTAS \\
+S1 & Introduccion a la Programacion & FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN \\
+S1 & Introduccion a la Ingenieria Informatica & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S2 & Fisica 2 & CIENCIAS EXACTAS \\
+S2 & Algebra 2 & CIENCIAS EXACTAS \\
+S2 & Calculo 2 & CIENCIAS EXACTAS \\
+S2 & Programacion de Computadores & FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN \\
+S2 & Introduccion a la Inovacion en Ingenieria & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S3 & Calculo 3 & CIENCIAS EXACTAS \\
+S3 & Ecuaciones diferenciales & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S3 & Logica & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S3 & Desarrollo orientados a objetos & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S3 & Sistemas computacionales y Arquitectura de Computadores & ARQUITECTURA Y ORGANIZACIÓN DE COMPUTADORES \\
+S4 & Matematica Discretas & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S4 & Calculo Numerico & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S4 & Proyecto de Programacion & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S4 & Estadisticas y Probabilidades & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S4 & Economia & CIENCIAS SOCIALES \\
+S4 & Estructuras de Datos & ALGORITMOS Y COMPLEJIDAD \\
+S5 & Gestion de empresas & CIENCIAS SOCIALES \\
+S5 & Practica Laboral & TRABAJO DE TITULACIÓN \\
+S5 & Bases de Datos & GESTIÓN DE DATOS \\
+S5 & Sistemas Operativos & SISTEMAS OPERATIVOS \\
+S5 & Ingles 1 & IDIOMAS \\
+S5 & Sustentabilidad y Responsabilidad Social en Ingenieria & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S5 & Electivo 1 & ELECTIVOS/TÓPICOS \\
+S6 & Redes de Computadores & REDES Y COMUNICACIONES \\
+S6 & Ingenieria de Software & INGENIERÍA DE SOFTWARE \\
+S6 & Ingles 2 & IDIOMAS \\
+S6 & Analisis de algoritmos & ALGORITMOS Y COMPLEJIDAD \\
+S6 & Optimizacion & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S6 & Complementario 1 & ELECTIVOS/TÓPICOS \\
+S7 & Analisis de Datos & GESTIÓN DE DATOS \\
+S7 & Diseño de Software & INGENIERÍA DE SOFTWARE \\
+S7 & Seguridad Informatica & SEGURIDAD INFORMÁTICA \\
+S7 & Inteligencia artificia & INTELIGENCIA ARTIFICIAL \\
+S7 & Ingles 3 & IDIOMAS \\
+S7 & Complementario 2 & ELECTIVOS/TÓPICOS \\
+S8 & Testing y Aseguramiento de Calidad de Software & INGENIERÍA DE SOFTWARE \\
+S8 & Sistemas Distributivos y Paralelismo & COMPUTACIÓN PARALELA Y DISTRIBUIDA \\
+S8 & Ingles 4 & IDIOMAS \\
+S8 & Practica Profesional & TRABAJO DE TITULACIÓN \\
+S8 & Electivo 2 & ELECTIVOS/TÓPICOS \\
+S8 & Electivo 3 & ELECTIVOS/TÓPICOS \\
+S8 & Complementario 3 & ELECTIVOS/TÓPICOS \\
+S9 & Proyecto informatico & INGENIERÍA DE SOFTWARE \\
+S9 & Formulacion y Evaluacion de Proyectos & INGENIERÍA DE SOFTWARE \\
+S9 & Electivo 4 & ELECTIVOS/TÓPICOS \\
+S9 & Electivo 5 & ELECTIVOS/TÓPICOS \\
+S9 & Electivo 6 & ELECTIVOS/TÓPICOS \\
+S10 & Memoria de Titulo & TRABAJO DE TITULACIÓN \\
+\end{longtable}
+\end{small}
+
+\vspace{18pt}
+\subsection[USM --- Ingeniería Informática]{\raggedright Universidad Técnica Federico Santa María (USM) --- Ingeniería Informática}
+
+\noindent\textbf{Plan de Estudio:} Profesional (8 Semestres) \hfill \textbf{Total Asignaturas:} 41 materias
+
+\vspace{4pt}
+
+\begin{small}
+\begin{longtable}{c >{\raggedright\arraybackslash}p{8.5cm} >{\raggedright\arraybackslash}p{5.5cm}}
+\caption{Malla curricular y clasificación ACM: USM (Ingeniería Informática).} \label{tab:USM08} \\
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Continuación: Malla curricular y clasificación ACM --- USM}} \\[3pt]
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\small\textit{Continúa en la siguiente página...}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+S1 & FUNDAMENTOS DE LA MATEMÁTICA & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S1 & INTRODUCCIÓN A LA INGENIERÍA & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S1 & PROGRAMACIÓN & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S1 & EDUCACIÓN FISICA 1 & CIENCIAS EXACTAS \\
+S1 & HUMANIDADES 1:COMPETENCIAS CLAVES PARA EL DESARROLLO PERSONAL & CIENCIAS SOCIALES \\
+S1 & DEASARROLLO PERSONAL & CIENCIAS SOCIALES \\
+S1 & INGLES 1 & IDIOMAS \\
+S2 & INTRODUCCION AL CALCULO & CIENCIAS BÁSICAS \\
+S2 & QUIMICA Y SOCIEDAD & CIENCIAS EXACTAS \\
+S2 & CIENCIAS DE LA INGENIERIA 1: ESTRUCTURA DE DATOS & GESTIÓN DE DATOS \\
+S2 & EDUCACIÓN FISICA 2 & CIENCIAS EXACTAS \\
+S2 & HUMANIDADES 2: COMPETENCIAS PARA EL DESARROLLO PROFESIONAL & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S2 & INGLES 2 & IDIOMAS \\
+S3 & MATEMATICA DE INGENIERIA & CIENCIAS EXACTAS \\
+S3 & INTRODUCCION A LA FISICA & CIENCIAS BÁSICAS \\
+S3 & CIENCIAS DE LA INGENIERIA 2: LENGUAJE DE PROGRAMACION & FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN \\
+S3 & ARQUITECTURA Y ORGANIZACION DE COMPUTADORES & ARQUITECTURA Y ORGANIZACIÓN DE COMPUTADORES \\
+S3 & BASES DE DATOS & GESTIÓN DE DATOS \\
+S3 & INGLES 3 & IDIOMAS \\
+S4 & ADMINISTRACION DE EMPRESAS & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S4 & FISICA MECANICA & CIENCIAS EXACTAS \\
+S4 & CIENCIAS DE LA INGENIERIA3: ANÁLISIS Y DISEÑO DE SOFTWARE & INGENIERÍA DE SOFTWARE \\
+S4 & SISTEMAS OPERATIVOS & SISTEMAS OPERATIVOS \\
+S4 & TALLER LENGUAJE DE PROGRAMACION & FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN \\
+S4 & ESTADISTICA & CIENCIAS EXACTAS \\
+S5 & INTRODUCCION A LAS FINANZAS & CIENCIAS SOCIALES \\
+S5 & GESTIÓN DE LA INNOVACION & CIENCIAS SOCIALES \\
+S5 & SISTEMAS INTEGRADOS DE LA INNOVACION & CIENCIAS SOCIALES \\
+S5 & REDES DE COMPUTADORES & ARQUITECTURA Y ORGANIZACIÓN DE COMPUTADORES \\
+S5 & INGENIERIA DE SOFTWARE & INGENIERÍA DE SOFTWARE \\
+S5 & CIENCIAS DE DATOS & GESTIÓN DE DATOS \\
+S6 & RESPONSABILIDAD SOCIAL EMPRESARIAL Y ETICA LABORAL & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S6 & GESTION DEL EMPRENDIMIENTO & CIENCIAS SOCIALES \\
+S6 & GESTION DE PROYECTOS & CIENCIAS SOCIALES \\
+S6 & TALLER DE ADMINISTRACION DE SISTEMAS & INGENIERÍA DE SOFTWARE \\
+S6 & INTELIGENCIA DE NEGOCIOS & CIENCIAS SOCIALES \\
+S6 & VISUALIZACION & ELECTIVOS/TÓPICOS \\
+S7 & PROYECTO DE SOFTWARE & TRABAJO DE TITULACIÓN \\
+S7 & SEMINARIO DE TITULO & TRABAJO DE TITULACIÓN \\
+S7 & PROYECTO DE SOFTWARE 2 & TRABAJO DE TITULACIÓN \\
+S7 & PROYECTO DE TITULO & TRABAJO DE TITULACIÓN \\
+\end{longtable}
+\end{small}
+
+\vspace{18pt}
+\subsection[PUCV --- Ingeniería Informática]{\raggedright Pontificia Universidad Católica de Valparaíso (PUCV) --- Ingeniería Informática}
+
+\noindent\textbf{Plan de Estudio:} Profesional (8 Semestres) \hfill \textbf{Total Asignaturas:} 43 materias
+
+\vspace{4pt}
+
+\begin{small}
+\begin{longtable}{c >{\raggedright\arraybackslash}p{8.5cm} >{\raggedright\arraybackslash}p{5.5cm}}
+\caption{Malla curricular y clasificación ACM: PUCV (Ingeniería Informática).} \label{tab:PUCV09} \\
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Continuación: Malla curricular y clasificación ACM --- PUCV}} \\[3pt]
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\small\textit{Continúa en la siguiente página...}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+S1 & FUNDAMENTOS DE MATEMÁTICAS PARA INGENIERÍA & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S1 & FUNDAMENTOS DE ALGORITMOS & ALGORITMOS Y COMPLEJIDAD \\
+S1 & INTRODUCCIÓN A LA INGENIERÍA INFORMÁTICA & FUNDAMENTOS DE SISTEMAS \\
+S1 & BIENESTAR Y APRENDIZAJE UNIVERSITARIO & CIENCIAS SOCIALES \\
+S1 & ANTROPOLOGÍA CRISTIANA & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S2 & ÁLGEBRA LINEAL & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S2 & CÁLCULO DIFERENCIAL E INTEGRAL & CIENCIAS EXACTAS \\
+S2 & FUNDAMENTOS DE PROGRAMACIÓN & FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN \\
+S2 & DESARROLLO INTEGRAL Y COMUNICACIÓN PARA INGENIERÍA & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S2 & ÉTICA CRISTIANA & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S3 & FÍSICA PARA INGENIERÍA & CIENCIAS BÁSICAS \\
+S3 & ESTADÍSTICA COMPUTACIONAL & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S3 & HARDWARE Y SISTEMAS OPERATIVOS & ARQUITECTURA Y ORGANIZACIÓN DE COMPUTADORES \\
+S3 & ESTRUCTURA DE DATOS & ALGORITMOS Y COMPLEJIDAD \\
+S3 & FORMACIÓN FUNDAMENTAL 1 & ELECTIVOS/TÓPICOS \\
+S4 & REDES DE COMPUTADORES & REDES Y COMUNICACIONES \\
+S4 & BASE DE DATOS & GESTIÓN DE DATOS \\
+S4 & PROGRAMACIÓN AVANZADA & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S4 & INGENIERÍA DE SOFTWARE & INGENIERÍA DE SOFTWARE \\
+S4 & INGLÉS 1 & IDIOMAS \\
+S4 & FORMACIÓN FUNDAMENTAL 2 & ELECTIVOS/TÓPICOS \\
+S5 & ECONOMÍA Y FINANZAS & CIENCIAS SOCIALES \\
+S5 & INTELIGENCIA ARTIFICIAL & INTELIGENCIA ARTIFICIAL \\
+S5 & MODELAMIENTO DE SOFTWARE & INGENIERÍA DE SOFTWARE \\
+S5 & INGENIERÍA DE REQUERIMIENTOS & INGENIERÍA DE SOFTWARE \\
+S5 & INGLÉS 2 & IDIOMAS \\
+S5 & OPTATIVO 1 & ELECTIVOS/TÓPICOS \\
+S6 & OPTIMIZACIÓN & ALGORITMOS Y COMPLEJIDAD \\
+S6 & TALLER DE BASE DE DATOS & GESTIÓN DE DATOS \\
+S6 & INGENIERÍA WEB Y MÓVIL & DESARROLLO PARA PLATAFORMAS ESPECIALIZADAS \\
+S6 & EXPERIENCIA DEL USUARIO & INTERACCIÓN HUMANO COMPUTADOR \\
+S6 & INGLÉS 3 & IDIOMAS \\
+S6 & OPTATIVO 2 & ELECTIVOS/TÓPICOS \\
+S7 & TALLER DE INGENIERÍA DE SOFTWARE & INGENIERÍA DE SOFTWARE \\
+S7 & CIBERSEGURIDAD & SEGURIDAD INFORMÁTICA \\
+S7 & SEMINARIO DE TÍTULO & TRABAJO DE TITULACIÓN \\
+S7 & TECNOLOGÍAS EMERGENTES & DESARROLLO PARA PLATAFORMAS ESPECIALIZADAS \\
+S7 & INGLÉS 4 & IDIOMAS \\
+S7 & FORMACIÓN FUNDAMENTAL 3 & ELECTIVOS/TÓPICOS \\
+S8 & NEGOCIOS, INNOVACIÓN Y EMPRENDIMIENTO & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S8 & PROYECTO DE TÍTULO & TRABAJO DE TITULACIÓN \\
+S8 & LEGISLACIÓN, ÉTICA Y TECNOLOGÍA & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S8 & OPTATIVO 3 & ELECTIVOS/TÓPICOS \\
+\end{longtable}
+\end{small}
+
+\vspace{18pt}
+\subsection[DUOC UC --- Ingeniería en Informática]{\raggedright Instituto Profesional Duoc UC (DUOC UC) --- Ingeniería en Informática}
+
+\noindent\textbf{Plan de Estudio:} Profesional (8 Semestres) \hfill \textbf{Total Asignaturas:} 49 materias
+
+\vspace{4pt}
+
+\begin{small}
+\begin{longtable}{c >{\raggedright\arraybackslash}p{8.5cm} >{\raggedright\arraybackslash}p{5.5cm}}
+\caption{Malla curricular y clasificación ACM: DUOC UC (Ingeniería en Informática).} \label{tab:DUOC10} \\
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Continuación: Malla curricular y clasificación ACM --- DUOC UC}} \\[3pt]
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\small\textit{Continúa en la siguiente página...}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+S1 & MODELAMIENTO DE BASE DE DATOS (10 créditos) & GESTIÓN DE DATOS \\
+S1 & DISEÑO Y GESTIÓN DE REQUISITOS (6 créditos) & FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN \\
+S1 & PROGRAMACIÓN DE ALGORITMOS (10 créditos) & ALGORITMOS Y COMPLEJIDAD \\
+S1 & INGLÉS BÁSICO I (8 créditos) & IDIOMAS \\
+S1 & HABILIDADES BÁSICAS DE COMUNICACIÓN (8 créditos) & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S1 & NIVELACIÓN MATEMÁTICA (12 créditos) & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S1 & PROCESO DE PORTAFOLIO & ELECTIVOS/TÓPICOS \\
+S2 & CONSULTAS DE BASES DE DATOS (10 créditos) & GESTIÓN DE DATOS \\
+S2 & DISEÑO DE PROTOTIPOS (6 créditos) & INTERACCIÓN HUMANO COMPUTADOR \\
+S2 & DESARROLLO DE SOFTWARE DE ESCRITORIO (10 créditos) & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S2 & INGLÉS BÁSICO II (8 créditos) & IDIOMAS \\
+S2 & FUNDAMENTOS DE ANTROPOLOGÍA (4 créditos) & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S2 & HABILIDADES DE COMUNICACIÓN EFECTIVA (8 créditos) & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S2 & MATEMÁTICA APLICADA (8 créditos) & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S3 & PROGRAMACIÓN DE BASE DE DATOS (10 créditos) & GESTIÓN DE DATOS \\
+S3 & INGENIERÍA DE SOFTWARE (6 créditos) & INGENIERÍA DE SOFTWARE \\
+S3 & PROGRAMACIÓN WEB (12 créditos) & REDES Y COMUNICACIONES \\
+S3 & INGLÉS ELEMENTAL (16 créditos) & IDIOMAS \\
+S3 & DOCTRINA SOCIAL DE LA IGLESIA (4 créditos) & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S3 & MENTALIDAD EMPRENDEDORA (6 créditos) & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S3 & PROCESO DE PORTAFOLIO 3 & ELECTIVOS/TÓPICOS \\
+S4 & PROGRAMACIÓN DE APLICACIONES MÓVILES (10 créditos) & DESARROLLO PARA PLATAFORMAS ESPECIALIZADAS \\
+S4 & INGLÉS INTERMEDIO (16 créditos) & IDIOMAS \\
+S4 & ARQUITECTURA (10 créditos) & ARQUITECTURA Y ORGANIZACIÓN DE COMPUTADORES \\
+S4 & CALIDAD DE SOFTWARE (8 créditos) & INGENIERÍA DE SOFTWARE \\
+S4 & ESTADÍSTICA DESCRIPTIVA (8 créditos) & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S4 & ÉTICA PARA EL TRABAJO (4 créditos) & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S4 & PROCESO DE PORTAFOLIO 4 & ELECTIVOS/TÓPICOS \\
+S5 & INGLÉS INTERMEDIO ALTO (16 créditos) & IDIOMAS \\
+S5 & INTEGRACIÓN DE PLATAFORMAS (8 créditos) & COMPUTACIÓN PARALELA Y DISTRIBUIDA \\
+S5 & EVALUACIÓN DE PROYECTOS (10 créditos) & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S5 & BPM (procesos) (8 créditos) & FUNDAMENTOS DE SISTEMAS \\
+S5 & CIBERSEGURIDAD EN TECNOLOGÍA EN CLOUD Y CONTENEDORES & SEGURIDAD INFORMÁTICA \\
+S5 & PROCESO DE PORTAFOLIO 5 & ELECTIVOS/TÓPICOS \\
+S5 & PRÁCTICA LABORAL (10 créditos) & TRABAJO DE TITULACIÓN \\
+S6 & SEGURIDAD EN SISTEMAS COMPUTACIONALES (8 créditos) & SEGURIDAD INFORMÁTICA \\
+S6 & GESTIÓN DE PROYECTOS INFORMÁTICOS (12 créditos) & INGENIERÍA DE SOFTWARE \\
+S6 & INTELIGENCIA DE NEGOCIOS (8 créditos) & GESTIÓN DE DATOS \\
+S6 & FUNDAMENTOS CLOUD COMPUTING (AMAZON AWS) (8 créditos) & COMPUTACIÓN PARALELA Y DISTRIBUIDA \\
+S6 & HERRAMIENTAS PARA EL EMPRENDIMIENTO (6 créditos) & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S6 & INTEGRATED ENGLISH PRACTICE (8 créditos) & IDIOMAS \\
+S6 & ÉTICA PROFESIONAL (4 créditos) & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S7 & GESTIÓN DE RIESGOS (10 créditos) & INTERACCIÓN HUMANO COMPUTADOR \\
+S7 & BIG DATA (10 créditos) & GESTIÓN DE DATOS \\
+S7 & MINERÍA DE DATOS (12 créditos) & GESTIÓN DE DATOS \\
+S7 & JAVA: DISEÑO Y CONSTRUCCIÓN DE SOLUCIONES NATIVAS EN NUBE & DESARROLLO PARA PLATAFORMAS ESPECIALIZADAS \\
+S7 & PROCESO DE PORTAFOLIO FINAL (6 créditos) & TRABAJO DE TITULACIÓN \\
+S8 & CAPSTONE (20 créditos) & TRABAJO DE TITULACIÓN \\
+S8 & PRÁCTICA PROFESIONAL (20 créditos) & TRABAJO DE TITULACIÓN \\
+\end{longtable}
+\end{small}
+
+\vspace{18pt}
+\subsection[USS --- Ingeniería Civil en Informática]{\raggedright Universidad San Sebastián (USS) --- Ingeniería Civil en Informática}
+
+\noindent\textbf{Plan de Estudio:} Civil (10 Semestres) \hfill \textbf{Total Asignaturas:} 49 materias
+
+\vspace{4pt}
+
+\begin{small}
+\begin{longtable}{c >{\raggedright\arraybackslash}p{8.5cm} >{\raggedright\arraybackslash}p{5.5cm}}
+\caption{Malla curricular y clasificación ACM: USS (Ingeniería Civil en Informática).} \label{tab:USS11} \\
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Continuación: Malla curricular y clasificación ACM --- USS}} \\[3pt]
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\small\textit{Continúa en la siguiente página...}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+S1 & Introducción al Cálculo & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S1 & Álgebra & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S1 & Taller de Aptitudes Lógicas y Matemáticas & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S1 & Taller de Programación I & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S1 & Introducción a la Ingeniería Informática & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S2 & Cálculo Diferencial e Integral & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S2 & Álgebra Lineal & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S2 & Química General & CIENCIAS EXACTAS \\
+S2 & Taller de Programación II & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S3 & Cálculo Multivariable & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S3 & Física & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S3 & Taller de Tecnologías Digitales & ALGORITMOS Y COMPLEJIDAD \\
+S3 & Paradigmas de Programación & FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN \\
+S4 & Ecuaciones Diferenciales & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S4 & Electricidad y Magnetismo & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S4 & Probabilidades y Estadísticas & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S4 & Matemática Discreta & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S4 & Taller de Sustentabilidad & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S5 & Estadística Avanzada & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S5 & Optimización & ALGORITMOS Y COMPLEJIDAD \\
+S5 & Algoritmos y Estructura de Datos & ALGORITMOS Y COMPLEJIDAD \\
+S5 & Taller de Innovación & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S5 & Infraestructura TI & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S5 & Persona y Sociedad & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S6 & Taller de Emprendimiento & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S6 & Sistemas Operativos & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S6 & Bases de Datos & GESTIÓN DE DATOS \\
+S6 & Introducción a la Ciencia de Datos & GESTIÓN DE DATOS \\
+S6 & Electivo I: Formación e Identidad & ELECTIVOS/TÓPICOS \\
+S6 & Gestión en Equipos para el Alto Desempeño & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S7 & Inteligencia Artificial & INTELIGENCIA ARTIFICIAL \\
+S7 & Big Data & COMPUTACIÓN PARALELA Y DISTRIBUIDA \\
+S7 & Aplicaciones y Tecnologías de la Web & DESARROLLO PARA PLATAFORMAS ESPECIALIZADAS \\
+S7 & Programación Avanzada & FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN \\
+S7 & Electivo II: Formación e Identidad & ELECTIVOS/TÓPICOS \\
+S8 & Taller de Interfaces y Diseño de Software & INTERACCIÓN HUMANO COMPUTADOR \\
+S8 & Ingeniería de Software y Aseguramiento de la Calidad & INGENIERÍA DE SOFTWARE \\
+S8 & Formulación y Evaluación de Proyectos & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S8 & Gestión para el Desarrollo Sostenible & ELECTIVOS/TÓPICOS \\
+S8 & Electivo III: Formación e Identidad & ELECTIVOS/TÓPICOS \\
+S9 & Ciberseguridad & SEGURIDAD INFORMÁTICA \\
+S9 & Taller de Integración de Software & INGENIERÍA DE SOFTWARE \\
+S9 & Gestión de Proyectos TI & INGENIERÍA DE SOFTWARE \\
+S9 & Taller en Empresa I & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S9 & Electivo de Profundización I & ELECTIVOS/TÓPICOS \\
+S9 & Electivo de Profundización II & ELECTIVOS/TÓPICOS \\
+S10 & Transformación Digital y Gobierno TI & GESTIÓN DE DATOS \\
+S10 & Vía de Titulación & TRABAJO DE TITULACIÓN \\
+S10 & Gestión de Carrera y Desarrollo Profesional & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+\end{longtable}
+\end{small}
+
+\vspace{18pt}
+\subsection[UST --- Ingeniería Civil en Informática y Sistemas Inteligentes]{\raggedright Universidad Santo Tomás (UST) --- Ingeniería Civil en Informática y Sistemas Inteligentes}
+
+\noindent\textbf{Plan de Estudio:} Civil (11 Semestres) \hfill \textbf{Total Asignaturas:} 61 materias
+
+\vspace{4pt}
+
+\begin{small}
+\begin{longtable}{c >{\raggedright\arraybackslash}p{8.5cm} >{\raggedright\arraybackslash}p{5.5cm}}
+\caption{Malla curricular y clasificación ACM: UST (Ingeniería Civil en Informática y Sistemas Inteligentes).} \label{tab:UST12} \\
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Continuación: Malla curricular y clasificación ACM --- UST}} \\[3pt]
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\small\textit{Continúa en la siguiente página...}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+S1 & Matemáticas para Ingeniería y Ciencias I & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S1 & Introducción a las Ciencias & CIENCIAS BÁSICAS \\
+S1 & Introducción a las TICs & REDES Y COMUNICACIONES \\
+S1 & Persona y Sentido & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S1 & Introducción a la Ingeniería Informática & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S1 & Taller de Competencias Comunicativas & CIENCIAS SOCIALES \\
+S2 & Matemáticas para Ingeniería y Ciencias II & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S2 & Estática y Dinámica & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S2 & Química para Ingeniería y Ciencias & CIENCIAS BÁSICAS \\
+S2 & Administración Moderna & CIENCIAS SOCIALES \\
+S2 & Electivo Formación General I & ELECTIVOS/TÓPICOS \\
+S3 & Matemáticas para Ingeniería y Ciencias III & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S3 & Ondas, Óptica y Calor & CIENCIAS BÁSICAS \\
+S3 & Algoritmos y Programación & ALGORITMOS Y COMPLEJIDAD \\
+S3 & Análisis Exploratorio de Datos & GESTIÓN DE DATOS \\
+S3 & Electivo Formación General II & ELECTIVOS/TÓPICOS \\
+S3 & Inglés Básico I & IDIOMAS \\
+S4 & Matemáticas Avanzadas y Aplicaciones & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S4 & Electricidad y Magnetismo & CIENCIAS BÁSICAS \\
+S4 & Probabilidades y Estadística & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S4 & Estructura de Datos y Algoritmos & ALGORITMOS Y COMPLEJIDAD \\
+S4 & Inglés Básico II & IDIOMAS \\
+S5 & Práctica Inicial & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S5 & Termodinámica & CIENCIAS BÁSICAS \\
+S5 & Transferencia de Energía y Masa & CIENCIAS BÁSICAS \\
+S5 & Elementos de Mecánica y Resistencia de Materiales & CIENCIAS BÁSICAS \\
+S5 & Investigación, Innovación y Emprendimiento & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S5 & Electivo Formación General II & ELECTIVOS/TÓPICOS \\
+S6 & Optimización & FUNDAMENTOS DE SISTEMAS \\
+S6 & Señales y Sistema & REDES Y COMUNICACIONES \\
+S6 & Innovación Empresarial & CIENCIAS SOCIALES \\
+S6 & Economía Industria & CIENCIAS SOCIALES \\
+S6 & Taller de Transferencia Tecnológica & COMPUTACIÓN PARALELA Y DISTRIBUIDA \\
+S6 & Idioma Electivo I & IDIOMAS \\
+S7 & Sistema Operativo & SISTEMAS OPERATIVOS \\
+S7 & Arquitectura y Organización de Computadores & ARQUITECTURA Y ORGANIZACIÓN DE COMPUTADORES \\
+S7 & Inteligencia de Negocio & CIENCIAS SOCIALES \\
+S7 & Teoría de Control I & REDES Y COMUNICACIONES \\
+S7 & Taller de Innovación Social & CIENCIAS SOCIALES \\
+S7 & Idioma Electivo II & IDIOMAS \\
+S8 & Ingeniería en Software & INGENIERÍA DE SOFTWARE \\
+S8 & Electivo I & ELECTIVOS/TÓPICOS \\
+S8 & Machine Learning & INTELIGENCIA ARTIFICIAL \\
+S8 & Teoría de Control II & REDES Y COMUNICACIONES \\
+S8 & Comunicaciones Digitales & REDES Y COMUNICACIONES \\
+S8 & Gestión del Capital Humano & CIENCIAS SOCIALES \\
+S9 & Big Data y Cloud Computing & GESTIÓN DE DATOS \\
+S9 & Electivo II & ALGORITMOS Y COMPLEJIDAD \\
+S9 & Pronósticos de Datos e Inteligencia Artificial (IA) & INTELIGENCIA ARTIFICIAL \\
+S9 & Arquitectura de Softwar & INGENIERÍA DE SOFTWARE \\
+S9 & Taller de Emprendimiento & CIENCIAS SOCIALES \\
+S9 & Data Driven & GESTIÓN DE DATOS \\
+S10 & Electivo III & ELECTIVOS/TÓPICOS \\
+S10 & Cyberseguridad & SEGURIDAD INFORMÁTICA \\
+S10 & Evaluación y Administración de Proyectos & TRABAJO DE TITULACIÓN \\
+S10 & Modelos de Negocios Sustentables & CIENCIAS SOCIALES \\
+S10 & Seminario de Título & TRABAJO DE TITULACIÓN \\
+S10 & Robótica & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S11 & Práctica Profesiona & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S11 & Ética, Ciudadanía y Sociedad & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S11 & Proyecto de Título (*) & TRABAJO DE TITULACIÓN \\
+\end{longtable}
+\end{small}
+
+\vspace{18pt}
+\subsection[UFRO --- Ingeniería Civil Informática]{\raggedright Universidad de La Frontera (UFRO) --- Ingeniería Civil Informática}
+
+\noindent\textbf{Plan de Estudio:} Civil (11 Semestres) \hfill \textbf{Total Asignaturas:} 56 materias
+
+\vspace{4pt}
+
+\begin{small}
+\begin{longtable}{c >{\raggedright\arraybackslash}p{8.5cm} >{\raggedright\arraybackslash}p{5.5cm}}
+\caption{Malla curricular y clasificación ACM: UFRO (Ingeniería Civil Informática).} \label{tab:UFRO13} \\
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Continuación: Malla curricular y clasificación ACM --- UFRO}} \\[3pt]
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\small\textit{Continúa en la siguiente página...}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+S1 & Ingeniería y Sociedad & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S1 & Fundamentos de Cálculo & CIENCIAS EXACTAS \\
+S1 & Álgebra & CIENCIAS EXACTAS \\
+S1 & Introducción a la Química & CIENCIAS BÁSICAS \\
+S1 & Habilidades Comunicativas en Ingeniería & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S2 & Introducción al Diseño de Ingeniería & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S2 & Cálculo en una variable & CIENCIAS EXACTAS \\
+S2 & Matemática para la Computación & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S2 & Física I & CIENCIAS EXACTAS \\
+S2 & Laboratorio de Ciencias & CIENCIAS BÁSICAS \\
+S3 & Fundamentos de Ecodiseño & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S3 & Cálculo Multivariable & CIENCIAS EXACTAS \\
+S3 & Álgebra Lineal & CIENCIAS EXACTAS \\
+S3 & Física II & CIENCIAS EXACTAS \\
+S3 & Electivo de Ingeniería & ELECTIVOS/TÓPICOS \\
+S3 & Taller de Programación & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S4 & Taller de Diseño de Ingeniería & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S4 & Programación Orientada a Objetos & FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN \\
+S4 & Ecuaciones Diferenciales & CIENCIAS EXACTAS \\
+S4 & Física III & CIENCIAS EXACTAS \\
+S4 & Taller de computación & FUNDAMENTOS DE SISTEMAS \\
+S4 & Electivo Formación General I & ELECTIVOS/TÓPICOS \\
+S5 & Economía y Finanzas Empresariales & CIENCIAS SOCIALES \\
+S5 & Probabilidad y Estadística para Ingeniería & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S5 & Bases de Datos & GESTIÓN DE DATOS \\
+S5 & Internet y Sistemas Operativos & SISTEMAS OPERATIVOS \\
+S5 & Algoritmos y Paradigmas & ALGORITMOS Y COMPLEJIDAD \\
+S5 & Electivo Formación General II & ELECTIVOS/TÓPICOS \\
+S6 & Formulación y Evaluación de Proyectos & CIENCIAS SOCIALES \\
+S6 & Ciencias de la Computación & ALGORITMOS Y COMPLEJIDAD \\
+S6 & Taller de Bases de Datos & GESTIÓN DE DATOS \\
+S6 & Computación en la Nube & FUNDAMENTOS DE SISTEMAS \\
+S6 & Ingeniería de Software & INGENIERÍA DE SOFTWARE \\
+S7 & Diseño de Negocios Innovadores & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S7 & Sistemas Inteligentes & INTELIGENCIA ARTIFICIAL \\
+S7 & Ingeniería de Datos & GESTIÓN DE DATOS \\
+S7 & Ciberseguridad & SEGURIDAD INFORMÁTICA \\
+S7 & Diseño de Experiencia de Usuario & INTERACCIÓN HUMANO COMPUTADOR \\
+S7 & Electivo Formación General III & ELECTIVOS/TÓPICOS \\
+S8 & Taller de Empresas Tecnológicas & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S8 & Taller de Ingeniería de Datos & GESTIÓN DE DATOS \\
+S8 & Taller de IoT y Robótica & DESARROLLO PARA PLATAFORMAS ESPECIALIZADAS \\
+S8 & Taller de Ingeniería de Software & INGENIERÍA DE SOFTWARE \\
+S8 & Taller Habilidades Profesionales & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S9 & Diseño proyecto de Ingeniería Informática & INGENIERÍA DE SOFTWARE \\
+S9 & Electivo de Especialidad I & ELECTIVOS/TÓPICOS \\
+S9 & Electivo de Especialidad II & ELECTIVOS/TÓPICOS \\
+S9 & Dirección de Proyectos & INGENIERÍA DE SOFTWARE \\
+S9 & Proyecto de Desarrollo de Software & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S9 & Electivo Formación General IV & ELECTIVOS/TÓPICOS \\
+S10 & Capstone Multidisciplinario & TRABAJO DE TITULACIÓN \\
+S10 & Electivo de Especialidad III & ELECTIVOS/TÓPICOS \\
+S10 & Investigación Aplicada en Informática & TRABAJO DE TITULACIÓN \\
+S10 & Proyecto de Integración de Informática & TRABAJO DE TITULACIÓN \\
+S10 & Electivo de Especialidad IV & ELECTIVOS/TÓPICOS \\
+S11 & Actividad de Titulación & TRABAJO DE TITULACIÓN \\
+\end{longtable}
+\end{small}
+
+\vspace{18pt}
+\subsection[UBB --- Ingeniería de Ejecución en Computación e Informática]{\raggedright Universidad del Bío-Bío (UBB) --- Ingeniería de Ejecución en Computación e Informática}
+
+\noindent\textbf{Plan de Estudio:} Ejecución (8 Semestres) \hfill \textbf{Total Asignaturas:} 45 materias
+
+\vspace{4pt}
+
+\begin{small}
+\begin{longtable}{c >{\raggedright\arraybackslash}p{8.5cm} >{\raggedright\arraybackslash}p{5.5cm}}
+\caption{Malla curricular y clasificación ACM: UBB (Ingeniería de Ejecución en Computación e Informática).} \label{tab:UBB14} \\
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Continuación: Malla curricular y clasificación ACM --- UBB}} \\[3pt]
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\small\textit{Continúa en la siguiente página...}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+S1 & ALGEBRA I & CIENCIAS EXACTAS \\
+S1 & NOCIONES DE COMPUTACION E INFORMATICA & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S1 & ALGORITMOS Y BASES DE LA PROGRAMACION & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S1 & INTRODUCCION A LA INGENERIA & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S1 & COMUNICACION Y ARGUMENTACION & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S1 & FORMACION INTEGRAL EXTRAPROGRAMATICA & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S2 & ALGEBRA II & CIENCIAS EXACTAS \\
+S2 & CALCULO I & CIENCIAS EXACTAS \\
+S2 & ALGORITMOS Y PROGRAMACION & ALGORITMOS Y COMPLEJIDAD \\
+S2 & ESTRUCTURAS DISCRETAS PARA CIENCIAS DE LA COMPUTACION & FUNDAMENTOS DE SISTEMAS \\
+S2 & FORMACION INTEGRAL OFERTA INSTITUCIONAL & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S2 & FORMACION INTEGRAL EXTRAPROGRAMATICA & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S3 & ESTADISTICA Y PROBABILIDADES & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S3 & CALCULO II & CIENCIAS EXACTAS \\
+S3 & ESTRUCTURA DE DATOS & GESTIÓN DE DATOS \\
+S3 & ADMINISTRACION GENERAL & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S3 & ECONOMIA & CIENCIAS SOCIALES \\
+S3 & FORMACION INTEGRAL EXTRAPROGRAMATICA & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S4 & ARQUITECTURA DE COMPUTADORES & ARQUITECTURA Y ORGANIZACIÓN DE COMPUTADORES \\
+S4 & PARADIGMAS DE LA PROGRAMACION & FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN \\
+S4 & ANALISIS DE ALGORITMO Y TEORIA DE AUTOMATAS & ALGORITMOS Y COMPLEJIDAD \\
+S4 & INGLES I & IDIOMAS \\
+S4 & PRACTICA PROFESIONAL I & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S5 & METODOLOGIA DE DESARROLLO & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S5 & BASE DE DATOS & GESTIÓN DE DATOS \\
+S5 & SISTEMAS DE INFORMACION & GESTIÓN DE DATOS \\
+S5 & SISTEMAS FINANCIEROS Y CONTABLES & CIENCIAS SOCIALES \\
+S5 & IGLES II & IDIOMAS \\
+S5 & FORMACION INTEGRAL OFERTA INSTITUCIONAL & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S6 & INTELIGENCIA ARTIFICIAL & INTELIGENCIA ARTIFICIAL \\
+S6 & SISTEMAS OPERATIVOS & SISTEMAS OPERATIVOS \\
+S6 & INGERIA EN SOFTWARE & INGENIERÍA DE SOFTWARE \\
+S6 & FORMULACION Y EVALUACION DE PROYECTOS & CIENCIAS SOCIALES \\
+S6 & IGLES III & IDIOMAS \\
+S6 & ELECTIVOS DE ESPCIALIDAD II & ELECTIVOS/TÓPICOS \\
+S7 & ELECTIVOS DE ESPCIALIDAD II & ELECTIVOS/TÓPICOS \\
+S7 & COMUNICACION DE DATOS Y REDES & REDES Y COMUNICACIONES \\
+S7 & TALLER DE DESARROLLO & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S7 & GESTION EMPRESARIAL & CIENCIAS SOCIALES \\
+S7 & INGLES IV & IDIOMAS \\
+S7 & PRACTICA PROFESIONAL II & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S8 & ELECTIVOS DE ESPCIALIDAD III & ELECTIVOS/TÓPICOS \\
+S8 & FORMACION INTEGRAL OFERTA INSTITUCIONAL & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S8 & P´ROYECTO FINAL DE CARRERA & TRABAJO DE TITULACIÓN \\
+S8 & FORMACION INTEGRAL EXTRAPROGRAMATICA & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+\end{longtable}
+\end{small}
+
+\vspace{18pt}
+\subsection[UTALCA --- Ingeniería Civil en Computación]{\raggedright Universidad de Talca (UTALCA) --- Ingeniería Civil en Computación}
+
+\noindent\textbf{Plan de Estudio:} Civil (10 Semestres) \hfill \textbf{Total Asignaturas:} 42 materias
+
+\vspace{4pt}
+
+\begin{small}
+\begin{longtable}{c >{\raggedright\arraybackslash}p{8.5cm} >{\raggedright\arraybackslash}p{5.5cm}}
+\caption{Malla curricular y clasificación ACM: UTALCA (Ingeniería Civil en Computación).} \label{tab:UTALCA15} \\
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Continuación: Malla curricular y clasificación ACM --- UTALCA}} \\[3pt]
+\toprule
+\textbf{Sem.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\small\textit{Continúa en la siguiente página...}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+S1 & introduccion a las matematicas & CIENCIAS BÁSICAS \\
+S1 & Introduccion a las ciencias para ingenieria & CIENCIAS BÁSICAS \\
+S1 & introduccion a la ingenieria en computacion & CIENCIAS SOCIALES \\
+S1 & programacion & FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN \\
+S1 & formacion inicial transversal & CIENCIAS SOCIALES \\
+S2 & lenguajes y paradigmas de programacion & FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN \\
+S2 & algenbra & CIENCIAS BÁSICAS \\
+S2 & calculo en una variable & CIENCIAS BÁSICAS \\
+S2 & programacion avanzada & FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN \\
+S2 & formacion cultural y ciudadania & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S3 & diseño de bases de datos & GESTIÓN DE DATOS \\
+S3 & algebra lineal & CIENCIAS BÁSICAS \\
+S3 & calculo en varias variables & CIENCIAS BÁSICAS \\
+S3 & algoritmos y estructuras de datos & ALGORITMOS Y COMPLEJIDAD \\
+S3 & lengua extranjera principiante 1 & IDIOMAS \\
+S4 & probabilidad y estadistica & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+S4 & arquitectura de computadores & ARQUITECTURA Y ORGANIZACIÓN DE COMPUTADORES \\
+S4 & fisica general & CIENCIAS BÁSICAS \\
+S4 & matematicas discretas y maquinas abstractas & ARQUITECTURA Y ORGANIZACIÓN DE COMPUTADORES \\
+S4 & lengua extranjera principiante 2 & IDIOMAS \\
+S5 & sistemas operativos y distribuidos & SISTEMAS OPERATIVOS \\
+S5 & fundamentos de ingenieria de software & INGENIERÍA DE SOFTWARE \\
+S5 & ecuaciones diferenciales & CIENCIAS BÁSICAS \\
+S5 & proyecto de programacion & FUNDAMENTOS DE LENGUAJES DE PROGRAMACIÓN \\
+S5 & lengua extrajera intermedio 1 & IDIOMAS \\
+S6 & redes de computadores & REDES Y COMUNICACIONES \\
+S6 & diseño de software & INGENIERÍA DE SOFTWARE \\
+S6 & fudamentos de inteligencia artificial & INTELIGENCIA ARTIFICIAL \\
+S6 & fundamentos para la gestion organizacional & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S6 & administracion de sistemas computacionales & ARQUITECTURA Y ORGANIZACIÓN DE COMPUTADORES \\
+S7 & construccion de software & INGENIERÍA DE SOFTWARE \\
+S7 & gestion de bases de datos & GESTIÓN DE DATOS \\
+S7 & innvocacion y emprendimiento & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S7 & seguridad informatica & SEGURIDAD INFORMÁTICA \\
+S8 & desarrollos multiplataforma & REDES Y COMUNICACIONES \\
+S8 & formulacion y evalucacion de proyectos & INTERACCIÓN HUMANO COMPUTADOR \\
+S8 & formacion colaborativo y social & SOCIEDAD, ÉTICA Y PROFESIONALISMO \\
+S9 & sistemas informaticos & FUNDAMENTOS DE SISTEMAS \\
+S9 & proyecto de desarrollo de software & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+S9 & formulacion de proyecto de titulacion & TRABAJO DE TITULACIÓN \\
+S9 & gestion de proyectos tecnologicos & INTERACCIÓN HUMANO COMPUTADOR \\
+S10 & proyecto de titulacion & TRABAJO DE TITULACIÓN \\
+\end{longtable}
+\end{small}
+
+\vspace{18pt}
+\subsection[UAUTONOMA --- Ingeniería en Informática]{\raggedright Universidad Autónoma de Chile (UAUTONOMA) --- Ingeniería en Informática}
+
+\noindent\textbf{Plan de Estudio:} Profesional Online (11 Trimestres) \hfill \textbf{Total Asignaturas:} 31 materias
+
+\vspace{4pt}
+
+\begin{small}
+\begin{longtable}{c >{\raggedright\arraybackslash}p{8.5cm} >{\raggedright\arraybackslash}p{5.5cm}}
+\caption{Malla curricular y clasificación ACM: UAUTONOMA (Ingeniería en Informática).} \label{tab:UA16} \\
+\toprule
+\textbf{Trim.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Continuación: Malla curricular y clasificación ACM --- UAUTONOMA}} \\[3pt]
+\toprule
+\textbf{Trim.} & \textbf{Asignatura} & \textbf{Clasificación ACM} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\small\textit{Continúa en la siguiente página...}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+T1 & Algebra & CIENCIAS EXACTAS \\
+T1 & Probabilidad y estadistica & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+T1 & Fudamentos de Gestion & CIENCIAS SOCIALES \\
+T2 & Calculo & CIENCIAS EXACTAS \\
+T2 & Inferencia estadisticas & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+T2 & fundamentos de bases de datos & GESTIÓN DE DATOS \\
+T3 & programacion & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+T3 & bases de hadware y software & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+T3 & Finanzas & FUNDAMENTOS MATEMÁTICOS Y ESTADÍSTICOS \\
+T4 & programacion orientada a objetos & FUNDAMENTOS DEL DESARROLLO DE SOFTWARE \\
+T4 & bases de datos relacionales & REDES Y COMUNICACIONES \\
+T4 & sistemas operativos & SISTEMAS OPERATIVOS \\
+T5 & metodologias lean diseño sistemas & FUNDAMENTOS DE SISTEMAS \\
+T5 & bases de datos no estructuradas & GESTIÓN DE DATOS \\
+T5 & Testeteo sofware & INGENIERÍA DE SOFTWARE \\
+T6 & Programacion front end & INGENIERÍA DE SOFTWARE \\
+T6 & ingienieria de softwares & INGENIERÍA DE SOFTWARE \\
+T7 & Programacion back end & INGENIERÍA DE SOFTWARE \\
+T7 & arquitectura y bases de datos & ARQUITECTURA Y ORGANIZACIÓN DE COMPUTADORES \\
+T7 & diseño de sistemas & SISTEMAS OPERATIVOS \\
+T8 & Mineria de datos & GESTIÓN DE DATOS \\
+T8 & Servicios Cloud & REDES Y COMUNICACIONES \\
+T8 & Inteligencia artificial & INTELIGENCIA ARTIFICIAL \\
+T8 & Gestion calidad de proyectos TI & INTERACCIÓN HUMANO COMPUTADOR \\
+T9 & Big data & GESTIÓN DE DATOS \\
+T9 & Machine learning & INGENIERÍA DE SOFTWARE \\
+T9 & Ciberceguridad & SEGURIDAD INFORMÁTICA \\
+T9 & Lot y desarrollo de aplicaciones & INGENIERÍA DE SOFTWARE \\
+T10 & Boot camp TI- desarrollo full stack (minor) & ELECTIVOS/TÓPICOS \\
+T10 & Proyecto de titulo & TRABAJO DE TITULACIÓN \\
+T11 & Practica profesional & TRABAJO DE TITULACIÓN \\
+\end{longtable}
+\end{small}
+
+
+\vfill
+\begin{center}
+    \small\sffamily\color{gray!80}
+    Documento generado para el Trabajo de Titulación --- Universidad de Santiago de Chile, 2026.
+\end{center}
+
+\end{document}

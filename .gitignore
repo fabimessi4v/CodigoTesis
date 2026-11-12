@@ -1,0 +1,39 @@
+# Entornos virtuales
+venv/
+env/
+.venv/
+ENV/
+
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs y volcados temporales
+*.log
+/tmp/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos de respaldo o copias manuales
+* (Copiar).*
+*.bak
+*.bak*
+*.tmp
+
+# Archivos auxiliares de LaTeX en caso de compilar en data/
+*.aux
+*.fdb_latexmk
+*.fls
+*.out
+*.toc
+*.bbl
+*.blg
+*.synctex.gz

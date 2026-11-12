@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pipeline Computacional - Análisis Curricular USACH</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Mermaid.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --usach-navy: #002855;
+            --usach-orange: #ea7600;
+        }
+        .bg-usach-navy { background-color: var(--usach-navy); }
+        .text-usach-navy { color: var(--usach-navy); }
+        .bg-usach-orange { background-color: var(--usach-orange); }
+        .border-usach-navy { border-color: var(--usach-navy); }
+        .border-usach-orange { border-color: var(--usach-orange); }
+        
+        #diagram-container {
+            min-height: 500px;
+            cursor: grab;
+        }
+        #diagram-container:active {
+            cursor: grabbing;
+        }
+        /* Custom scrollbar */
+        /* Print style for direct PDF export */
+        @media print {
+            header, .border-b, section:first-child, #error-box { display: none !important; }
+            body { background: white !important; }
+            main { height: auto !important; }
+            #diagram-wrapper { padding: 0 !important; overflow: visible !important; }
+            #diagram-container { transform: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 flex flex-col h-screen overflow-hidden font-sans">
+
+    <!-- Header institucional -->
+    <header class="bg-usach-navy text-white px-5 py-3 shadow-md flex items-center justify-between shrink-0 border-b-4 border-usach-orange">
+        <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 rounded-full bg-usach-orange flex items-center justify-center font-bold text-white text-sm shadow">
+                U
+            </div>
+            <div>
+                <h1 class="text-base font-bold tracking-wide">Pipeline Computacional de Análisis Curricular</h1>
+                <p class="text-xs text-slate-300">Trabajo de Titulación — Fabián Ibarra Norambuena | USACH 2026</p>
+            </div>
+        </div>
+        <div class="flex items-center space-x-2">
+            <span class="text-xs bg-slate-800 text-amber-400 px-2.5 py-1 rounded font-mono border border-slate-700">
+                16 Universidades | 746 Asignaturas | SBERT d=768
+            </span>
+            <button id="btn-export-svg" class="bg-usach-orange hover:bg-orange-600 text-white text-xs font-semibold px-3 py-1.5 rounded transition shadow flex items-center space-x-1" title="Descargar archivo SVG vectorial">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                <span>Descargar SVG</span>
+            </button>
+            <button id="btn-export-pdf" class="bg-blue-700 hover:bg-blue-600 text-white text-xs font-semibold px-3 py-1.5 rounded transition shadow flex items-center space-x-1" title="Guardar o imprimir diagrama como PDF">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                <span>Guardar PDF</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Toolbar / Control Bar -->
+    <div class="bg-white border-b border-slate-200 px-5 py-2 flex items-center justify-between shrink-0 shadow-sm text-xs">
+        <div class="flex items-center space-x-2">
+            <span class="font-semibold text-slate-600">Vistas Rápidas:</span>
+            <button class="preset-btn px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition" data-preset="full">1. Pipeline Completo (End-to-End)</button>
+            <button class="preset-btn px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition" data-preset="compact">2. Vista Ejecutiva (Sintética)</button>
+            <button class="preset-btn px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition" data-preset="nlp">3. Foco PLN & Embeddings</button>
+            <button class="preset-btn px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition" data-preset="clustering">4. Foco Clustering & Métricas</button>
+        </div>
+        <div class="flex items-center space-x-2">
+            <button id="btn-zoom-in" class="p-1.5 bg-slate-100 hover:bg-slate-200 rounded text-slate-700" title="Acercar (Zoom In)">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+            </button>
+            <button id="btn-zoom-out" class="p-1.5 bg-slate-100 hover:bg-slate-200 rounded text-slate-700" title="Alejar (Zoom Out)">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6"></path></svg>
+            </button>
+            <button id="btn-zoom-reset" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-slate-700 font-medium" title="Restablecer vista">100%</button>
+            <div class="h-4 w-px bg-slate-300 mx-1"></div>
+            <button id="btn-copy" class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 rounded text-slate-700 font-medium flex items-center space-x-1">
+                <span>Copiar Mermaid</span>
+            </button>
+            <button id="btn-save-mmd" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white rounded font-medium flex items-center space-x-1" title="Descargar código editado a pipeline_diagrama.mmd">
+                <span>Descargar .mmd</span>
+            </button>
+            <button id="btn-render" class="px-3 py-1 bg-usach-navy hover:bg-blue-900 text-white rounded font-medium flex items-center space-x-1 shadow">
+                <span>Actualizar Diagrama</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Workspace (Editor + Live Preview) -->
+    <main class="flex-1 flex overflow-hidden">
+        
+        <!-- Editor Panel (Left) -->
+        <section class="w-1/3 min-w-[340px] max-w-[500px] border-r border-slate-200 bg-slate-50 flex flex-col shrink-0">
+            <div class="px-3 py-2 bg-slate-200/70 border-b border-slate-300 flex items-center justify-between text-xs font-semibold text-slate-700">
+                <span class="flex items-center space-x-1">
+                    <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                    <span>Código Mermaid (Editable en tiempo real)</span>
+                </span>
+                <span id="render-status" class="text-emerald-600 font-normal">Sincronizado</span>
+            </div>
+            <div class="flex-1 p-2 relative">
+                <textarea id="mermaid-code" class="w-full h-full p-3 font-mono text-xs text-slate-800 bg-white border border-slate-300 rounded shadow-inner focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none leading-relaxed" spellcheck="false"></textarea>
+            </div>
+            <div class="p-2.5 bg-slate-100 border-t border-slate-200 text-[11px] text-slate-500 flex items-center justify-between">
+                <span>Tip: Edita cualquier texto o nodo y presiona <b>Ctrl+Enter</b></span>
+                <span class="text-usach-navy font-semibold">Mermaid.js v10</span>
+            </div>
+        </section>
+
+        <!-- Preview Canvas (Right) -->
+        <section class="flex-1 bg-white flex flex-col relative overflow-hidden">
+            <div id="diagram-wrapper" class="flex-1 overflow-auto p-8 flex items-center justify-center relative">
+                <div id="diagram-container" class="transition-transform duration-100 origin-center flex items-center justify-center">
+                    <!-- Mermaid rendered SVG goes here -->
+                </div>
+            </div>
+            <div id="error-box" class="hidden absolute bottom-4 left-4 right-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded text-xs shadow-lg"></div>
+        </section>
+
+    </main>
+
+    <script>
+        // Preset definitions
+        const presets = {
+            full: `flowchart TD
+    %% ========================================================
+    %% PIPELINE COMPUTACIONAL REFINADO: INGESTA -> BD ESTRUCTURADA -> SBERT -> BD VECTORIAL -> CLUSTERING -> DASHBOARD
+    %% ========================================================
+
+    subgraph F1["1. Ingesta de Datos & Ground Truth Curado"]
+        direction TB
+        A1["16 Mallas Curriculares<br/><b>746 Asignaturas</b><br/><i></i>"]
+        A2["Curaduría Ground Truth ACM<br/><b>746 Asignaturas etiquetadas</b><br/><i>(23 Áreas ACM/IEEE-CS ya asignadas)</i>"]
+        A3["16 Perfiles de Egreso Declarados<br/><b>Textos Oficiales</b><br/><i>(Competencias y Resultados de Aprendizaje)</i>"]
+        A4["Marco Taxonómico ACM/IEEE-CS<br/><b>23 Áreas de Conocimiento</b><br/><i>(Descriptores canónicos de referencia)</i>"]
+        A5["Mercado Laboral LinkedIn<br/><b>200 Ofertas Laborales</b><br/><i>(100 Empresa TI / 100 Sector No-TI)</i>"]
+    end
+
+    subgraph F2["2. Capa de Datos Estructurada (Fuente de Verdad)"]
+        direction TB
+        B1[("Base de Datos Estructurada<br/><b>PostgreSQL / SQLite / JSON Schema</b><br/><i>Tablas: Universidades, Mallas, Perfiles, ACM, Trabajos</i>")]
+        B2["Pipeline de Normalización Textual<br/><i>(Limpieza léxica, minúsculas, filtrado stop-words académicas)</i>"]
+    end
+
+    subgraph F3["3. Modelo de Embeddings & Capa Vectorial"]
+        direction TB
+        C1["Modelo Sentence-Transformers SBERT<br/><b>paraphrase-multilingual-mpnet-base-v2</b>"]
+        C2["Generación de Embeddings Densos en R^768<br/><b>v_malla, v_perfil, v_acm, v_laboral</b>"]
+        C3[("Base de Datos Vectorial<br/><b>ChromaDB / Qdrant / PGVector</b><br/><i>Indexación HNSW + Metadatos asociados</i>")]
+    end
+
+    subgraph F4["4. Modelamiento Curricular Tripartito & Métricas"]
+        direction TB
+        D1["Clustering K-Means<br/><i>(Particiones convexas y centroides formativos c_k)</i>"]
+        D2["Agrupamiento Jerárquico Aglomerativo<br/><i>(Dendrogramas y relaciones taxonómicas anidadas)</i>"]
+        D3["Clustering DBSCAN<br/><i>(Aislamiento de asignaturas atípicas y outliers)</i>"]
+        D4["Reducción Dimensional UMAP<br/><b>Proyección 2D/3D (Trustworthiness ≥ 0.85)</b>"]
+        D5["Métricas de Alineación Trilateral<br/><b>Similitud Coseno cos θ</b><br/><b>Tasa Cobertura ACM %</b><br/><b>Brecha Formativa (1 - cos θ)</b>"]
+        D6["Validación Extrínseca vs Ground Truth<br/><b>Adjusted Rand Index (ARI), NMI, Pureza</b>"]
+    end
+
+    subgraph F5["5. Almacenamiento de Resultados, Dashboard & Validación"]
+        direction TB
+        E1["Exportación de Artefactos de Consumo<br/><i>matrices_similitud.json, coords_umap.json</i>"]
+        E2["Dashboard Interactivo en React<br/><b>Visualizador de Mapas Semánticos y Brechas</b>"]
+        E3["Validación Cualitativa con Expertos<br/><b>Panel independiente de 3 evaluadores</b>"]
+    end
+
+    %% Conexiones de Ingesta a BD Estructurada
+    A1 --> B1
+    A2 --> B1
+    A3 --> B1
+    A4 --> B1
+    A5 --> B1
+
+    %% De BD Estructurada a Normalización y SBERT
+    B1 --> B2
+    B2 --> C1
+    C1 --> C2
+
+    %% De Embeddings a BD Vectorial
+    C2 --> C3
+
+    %% De BD Vectorial a Modelamiento y Métricas
+    C3 --> D1
+    C3 --> D2
+    C3 --> D3
+    C3 --> D4
+    C3 --> D5
+
+    %% Validación Ground Truth (usa las etiquetas de B1 y clusters de D1)
+    B1 -.-> D6
+    D1 --> D6
+
+    %% De Modelamiento a Resultados y Dashboard
+    D1 --> E1
+    D4 --> E1
+    D5 --> E1
+    E1 --> E2
+    E2 --> E3
+
+    %% Estilos de Nodos y Colores
+    classDef fase1 fill:#E8EEF5,stroke:#002855,stroke-width:2px,color:#002855;
+    classDef fase2 fill:#F5EEF8,stroke:#6C3483,stroke-width:2px,color:#512E5F;
+    classDef fase3 fill:#FEF3E6,stroke:#EA7600,stroke-width:2px,color:#9E4B00;
+    classDef fase4 fill:#EBF5FB,stroke:#1B4F72,stroke-width:2px,color:#1B4F72;
+    classDef fase5 fill:#EAFAF1,stroke:#1E8449,stroke-width:2px,color:#145A32;
+
+    class A1,A2,A3,A4,A5 fase1;
+    class B1,B2 fase2;
+    class C1,C2,C3 fase3;
+    class D1,D2,D3,D4,D5,D6 fase4;
+    class E1,E2,E3 fase5;`,
+
+            compact: `flowchart LR
+    subgraph S1["1. Ingesta & Ground Truth"]
+        D1["16 Mallas (746 Asig.)"]
+        D2["Ground Truth ACM"]
+        D3["Perfiles & LinkedIn"]
+    end
+
+    subgraph S2["2. BD Estructurada"]
+        B1[("PostgreSQL / SQLite")]
+        B2["Normalización"]
+    end
+
+    subgraph S3["3. Embeddings & BD Vectorial"]
+        M1["SBERT (d=768)"]
+        V1[("ChromaDB / Qdrant")]
+    end
+
+    subgraph S4["4. Clustering & Métricas"]
+        C1["K-Means / Dendrogramas / DBSCAN"]
+        C2["Alineación Coseno & Cobertura"]
+    end
+
+    subgraph S5["5. Despliegue"]
+        A1["Dashboard React"]
+        A2["3 Expertos"]
+    end
+
+    S1 --> S2
+    S2 --> S3
+    S3 --> S4
+    S4 --> S5`,
+
+            nlp: `flowchart TD
+    subgraph Textos["Entrada de Textos Curriculares"]
+        T1["Nombres y descriptores de 746 asignaturas"]
+        T2["Competencias de 16 Perfiles Declarados"]
+        T3["Definiciones canónicas de 23 áreas ACM"]
+        T4["Requerimientos de 200 vacantes laborales"]
+    end
+
+    subgraph Preprocesamiento["Normalización & Curaduría"]
+        P1["Limpieza léxica: minúsculas, tildes, caracteres raros"]
+        P2["Filtrado de stop-words académicas ('taller', 'intro', 'I', 'II')"]
+        P3["Ground Truth Curado: etiquetado manual en áreas ACM"]
+    end
+
+    subgraph Vectorizacion["Vectorización SBERT"]
+        V1["paraphrase-multilingual-mpnet-base-v2"]
+        V2["Proyección a espacio continuo R^768"]
+        V3["UMAP: Reducción 2D/3D (Trustworthiness ≥ 0.85)"]
+    end
+
+    Textos --> Preprocesamiento
+    Preprocesamiento --> Vectorizacion`,
+
+            clustering: `flowchart TD
+    subgraph Insumo["Vectores Densos SBERT (R^768)"]
+        V["Matriz de Asignaturas (746 x 748)"]
+        VP["Vectores de Perfiles Declarados (16 x 768)"]
+        VA["Vectores de Referencia ACM (23 x 768)"]
+    end
+
+    subgraph Cluster["Algoritmos de Agrupamiento"]
+        K["K-Means (k=5 a k=23) -> Centroides c_k"]
+        H["Jerárquico (Ward) -> Dendrogramas"]
+        D["DBSCAN (eps, min_samples) -> Outliers de Malla"]
+    end
+
+    subgraph Metricas["Métricas & Alineación"]
+        M1["Alineación Malla vs Perfil: cos(v_malla, v_perfil)"]
+        M2["Cobertura ACM: % de áreas cubiertas (umbral ≥ 0.60)"]
+        M3["Brecha Laboral: 1 - cos(v_malla, v_laboral)"]
+        M4["Evaluación Extrínseca: ARI, NMI, Pureza vs Ground Truth"]
+    end
+
+    Insumo --> Cluster
+    Cluster --> Metricas`
+        };
+
+        // DOM elements
+        const textarea = document.getElementById('mermaid-code');
+        const container = document.getElementById('diagram-container');
+        const errorBox = document.getElementById('error-box');
+        const statusEl = document.getElementById('render-status');
+        const btnRender = document.getElementById('btn-render');
+        const btnCopy = document.getElementById('btn-copy');
+        const btnExportSvg = document.getElementById('btn-export-svg');
+        const btnZoomIn = document.getElementById('btn-zoom-in');
+        const btnZoomOut = document.getElementById('btn-zoom-out');
+        const btnZoomReset = document.getElementById('btn-zoom-reset');
+
+        // State
+        let currentScale = 1;
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: 'default',
+            securityLevel: 'loose',
+            flowchart: {
+                htmlLabels: true,
+                curve: 'basis',
+                useMaxWidth: false
+            }
+        });
+
+        // Initialize with 'full' preset
+        textarea.value = presets.full;
+
+        // Render function
+        async function renderDiagram() {
+            const code = textarea.value.trim();
+            statusEl.textContent = 'Renderizando...';
+            statusEl.className = 'text-amber-600 font-normal';
+            errorBox.classList.add('hidden');
+
+            try {
+                // Clear previous
+                container.innerHTML = '';
+                const id = 'mermaid-svg-' + Date.now();
+                const { svg } = await mermaid.render(id, code);
+                container.innerHTML = svg;
+                statusEl.textContent = 'Sincronizado';
+                statusEl.className = 'text-emerald-600 font-normal';
+            } catch (err) {
+                console.error(err);
+                statusEl.textContent = 'Error de sintaxis';
+                statusEl.className = 'text-red-600 font-semibold';
+                errorBox.textContent = 'Error al renderizar Mermaid: ' + (err.message || err);
+                errorBox.classList.remove('hidden');
+            }
+        }
+
+        // Zoom controls
+        function updateZoom() {
+            container.style.transform = `scale(${currentScale})`;
+            btnZoomReset.textContent = Math.round(currentScale * 100) + '%';
+        }
+
+        btnZoomIn.addEventListener('click', () => {
+            currentScale = Math.min(currentScale + 0.15, 2.5);
+            updateZoom();
+        });
+
+        btnZoomOut.addEventListener('click', () => {
+            currentScale = Math.max(currentScale - 0.15, 0.3);
+            updateZoom();
+        });
+
+        btnZoomReset.addEventListener('click', () => {
+            currentScale = 1;
+            updateZoom();
+        });
+
+        // Wheel zoom
+        document.getElementById('diagram-wrapper').addEventListener('wheel', (e) => {
+            if (e.ctrlKey) {
+                e.preventDefault();
+                if (e.deltaY < 0) {
+                    currentScale = Math.min(currentScale + 0.1, 2.5);
+                } else {
+                    currentScale = Math.max(currentScale - 0.1, 0.3);
+                }
+                updateZoom();
+            }
+        });
+
+        // Preset switcher
+        document.querySelectorAll('.preset-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const presetKey = btn.getAttribute('data-preset');
+                if (presets[presetKey]) {
+                    textarea.value = presets[presetKey];
+                    renderDiagram();
+                    // Update active styles
+                    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('bg-usach-navy', 'text-white'));
+                    btn.classList.add('bg-usach-navy', 'text-white');
+                }
+            });
+        });
+
+        // Render button & Ctrl+Enter
+        btnRender.addEventListener('click', renderDiagram);
+        textarea.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'Enter') {
+                e.preventDefault();
+                renderDiagram();
+            }
+        });
+
+        // Auto-render with debounce
+        let debounceTimer;
+        textarea.addEventListener('input', () => {
+            statusEl.textContent = 'Editando...';
+            statusEl.className = 'text-slate-500 font-normal';
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(renderDiagram, 800);
+        });
+
+        // Copy button
+        btnCopy.addEventListener('click', () => {
+            navigator.clipboard.writeText(textarea.value).then(() => {
+                const oldText = btnCopy.textContent;
+                btnCopy.textContent = '¡Copiado!';
+                setTimeout(() => btnCopy.textContent = oldText, 2000);
+            });
+        });
+
+        // Save / Download .mmd button
+        document.getElementById('btn-save-mmd').addEventListener('click', () => {
+            const blob = new Blob([textarea.value], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'pipeline_diagrama.mmd';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+
+        // Export SVG
+        btnExportSvg.addEventListener('click', () => {
+            const svgElement = container.querySelector('svg');
+            if (!svgElement) {
+                alert('No hay diagrama renderizado para exportar.');
+                return;
+            }
+            const svgData = new XMLSerializer().serializeToString(svgElement);
+            const blob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'pipeline_analisis_curricular_usach.svg';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+
+        // Export PDF (triggers clean print preview)
+        document.getElementById('btn-export-pdf').addEventListener('click', () => {
+            window.print();
+        });
+
+        // Initial render
+        renderDiagram();
+    </script>
+</body>
+</html>

@@ -1,0 +1,484 @@
+\documentclass[11pt,a4paper]{article}
+
+% --- PAQUETES DE CONFIGURACIÓN ---
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage[inline]{enumitem}
+\usepackage{amsmath,amssymb}
+\usepackage{caption}
+\usepackage{hyperref}
+
+% --- CONFIGURACIÓN DE COLORES INSTITUCIONALES ---
+\definecolor{UsachNavy}{RGB}{0, 40, 85}
+\definecolor{UsachOrange}{RGB}{234, 118, 0}
+\definecolor{LightGray}{RGB}{246, 248, 251}
+\definecolor{DarkGray}{RGB}{60, 64, 67}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=UsachNavy,
+    urlcolor=UsachOrange,
+    pdftitle={Anexo C: Corpus de Datos y Plantilla de Perfiles de Egreso Declarados},
+    pdfauthor={Fabián Ibarra Norambuena - USACH}
+}
+
+% --- ESTILOS DE CAJAS TCOLORBOX PARA LAS FICHAS ---
+\tcbset{
+    fichaStyle/.style={
+        breakable,
+        colback=LightGray,
+        colframe=UsachNavy,
+        fonttitle=\bfseries\sffamily\large,
+        coltitle=white,
+        boxrule=1pt,
+        arc=3pt,
+        top=8pt, bottom=8pt, left=10pt, right=10pt
+    },
+    templateStyle/.style={
+        breakable,
+        colback=white,
+        colframe=DarkGray,
+        fonttitle=\bfseries\sffamily,
+        coltitle=white,
+        boxrule=0.8pt,
+        arc=2pt,
+        top=6pt, bottom=6pt, left=8pt, right=8pt
+    }
+}
+
+% --- ENCABEZADO Y PIE DE PÁGINA ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\small\sffamily\color{DarkGray} Corpus de Datos y Perfiles de Egreso - 16 Universidades}
+\lhead{\small\sffamily\color{UsachNavy}\textbf{USACH | Trabajo de Titulación}}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% --- DOCUMENTO PRINCIPAL ---
+\begin{document}
+
+% --- PORTADA / ENCABEZADO DEL INFORME ---
+\begin{center}
+    {\Large\bfseries\sffamily\color{UsachNavy} UNIVERSIDAD DE SANTIAGO DE CHILE}\\[3pt]
+    {\small\sffamily\color{DarkGray} FACULTAD DE INGENIERÍA --- DEPARTAMENTO DE INGENIERÍA INFORMÁTICA}\\[15pt]
+    
+    {\Large\bfseries\sffamily\color{UsachOrange} ANEXO C: CORPUS DE DATOS Y PLANTILLAS DE PERFILES DE EGRESO DECLARADOS}\\[6pt]
+    {\large\sffamily\color{UsachNavy} Proyecto: Método Computacional de Análisis Curricular de Ingeniería Informática en Chile}\\[12pt]
+    
+    \begin{tcolorbox}[colback=UsachNavy!5,colframe=UsachNavy,arc=4pt,boxrule=0.5pt]
+        \centering\small\sffamily
+        \textbf{Autor:} Fabián Ibarra Norambuena \quad|\quad 
+        \textbf{Institución:} Universidad de Santiago de Chile (USACH)\\[2pt]
+        \textbf{Comisión Evaluadora:} Prof. Pamela Landeros, Prof. Víctor Araya\\[2pt]
+        \textbf{Alcance del Corpus:} 16 Programas Universitarios | 747 Asignaturas Mapeadas
+    \end{tcolorbox}
+\end{center}
+
+\vspace{10pt}
+
+% --- SECCIÓN 1: RESUMEN Y TABLA DEL CORPUS ---
+\section{\texorpdfstring{\sffamily\color{UsachNavy} Resumen del Corpus de Datos (16 Universidades)}{Resumen del Corpus de Datos (16 Universidades)}}
+
+El corpus de datos recolectado para el trabajo de titulación abarca un total de \textbf{16 programas de estudio} pertenecientes a universidades del Consejo de Rectores (CRUCH) e instituciones privadas acreditadas en Chile. El dominio abarca carreras de ciclo largo (Ingeniería Civil en Informática/Computación) y carreras de ejecución y corte tecnológico (Ingeniería de Ejecución en Computación e Informática, Ingeniería en Informática).
+
+En conjunto, el corpus suma \textbf{747 asignaturas}, las cuales cuentan con información modular estandarizada (nombre, código, semestre y descripción temática). La Tabla~\ref{tab:corpus} presenta la distribución oficial de los datos recopilados.
+
+\begin{small}
+\begin{longtable}{p{5.8cm} p{6.6cm} c}
+\caption{Planes de estudio y asignaturas recopiladas por universidad (Corpus oficial de 16 programas).} \label{tab:corpus} \\
+\toprule
+\textbf{Universidad} & \textbf{Carrera} & \textbf{Nº Asignaturas} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+Universidad de Santiago de Chile & Ing. de Ejecución en Computación e Informática & 43 \\
+Universidad de Santiago de Chile & Ingeniería Civil en Informática & 58 \\
+Universidad de Chile & Ingeniería Civil en Computación & 54 \\
+Universidad Andrés Bello & Ingeniería en Computación e Informática & 41 \\
+Universidad de Magallanes & Ingeniería en Computación e Informática & 41 \\
+Universidad Tecnológica Metropolitana & Ingeniería en Informática & 44 \\
+Universidad de Concepción & Ingeniería Civil Informática & 54 \\
+Universidad Técnica Federico Santa María & Ingeniería en Informática & 42 \\
+Pontificia Univ. Católica de Valparaíso & Ingeniería Informática & 44 \\
+Duoc UC & Ingeniería Informática & 33 \\
+Universidad San Sebastián & Ingeniería Civil en Informática & 50 \\
+Universidad Santo Tomás & Ing. Civil en Informática y Sistemas Inteligentes & 60 \\
+Universidad de la Frontera & Ingeniería Civil Informática & 57 \\
+Universidad del Bío-Bío & Ing. de Ejecución en Computación e Informática & 46 \\
+Universidad de Talca & Ingeniería Civil en Computación & 43 \\
+Universidad Autónoma de Chile & Ingeniería en Informática & 32 \\
+\midrule
+\multicolumn{2}{r}{\textbf{Total del Corpus (16 Programas / Planes de Estudio)}} & \textbf{747} \\
+\end{longtable}
+\end{small}
+
+\vspace{10pt}
+
+% --- SECCIÓN 2: ESTRUCTURA DE LA PLANTILLA ---
+\section{\texorpdfstring{\sffamily\color{UsachNavy} Estructura Normalizada para Perfiles de Egreso Declarados}{Estructura Normalizada para Perfiles de Egreso Declarados}}
+
+Para responder a las observaciones del informe de re-corrección (Observación \#4 de la Comisión Evaluadora), se define una \textbf{ficha técnica normalizada} para registrar formalmente el \textbf{Perfil de Egreso Declarado} por cada una de las 16 universidades que componen el corpus de estudio. 
+
+La ficha técnica contempla exclusivamente los datos oficiales provistos documentalmente por cada institución:
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*]
+    \item \textbf{Identificación Institucional y Curricular:} Universidad, nombre oficial del programa, modalidad/tipo de plan, identificador ID único y cantidad de asignaturas recopiladas en la malla.
+    \item \textbf{Texto Oficial del Perfil de Egreso Declarado:} Transcripción íntegra, literal y fidedigna del texto del perfil de egreso promulgado o publicado por la institución, preservando su redacción original sin alteraciones ni segmentaciones artificiales.
+\end{enumerate}
+
+\newpage
+
+% --- SECCIÓN 3: FICHAS DE PERFILES DE EGRESO (16 UNIVERSIDADES) ---
+\section{\texorpdfstring{\sffamily\color{UsachNavy} Fichas de Registro por Universidad}{Fichas de Registro por Universidad}}
+
+A continuación se presentan las fichas de registro documental de los perfiles de egreso oficiales recopilados para las 16 universidades que componen el corpus de estudio.
+
+% --- FICHA 1: USACH EJECUCIÓN ---
+\begin{tcolorbox}[fichaStyle, title={UNIVERSIDAD 01: Universidad de Santiago de Chile (USACH) --- Ejecución}]
+\small\sffamily
+\textbf{Carrera:} Ingeniería de Ejecución en Computación e Informática \hfill \textbf{ID:} \texttt{USACH\_01} \\
+\textbf{Tipo de Plan:} Ejecución (8 Semestres) \hfill \textbf{Total Asignaturas Malla:} 43
+
+\tcbline
+
+\textbf{Texto Oficial del Perfil de Egreso Declarado:}\\[4pt]
+{\small\rmfamily
+El/la Ingeniero/a de Ejecución en Computación e Informática es un/a profesional capaz de diagnosticar y resolver problemas de ingeniería informática, colaborando en la ejecución de proyectos y en la gestión de equipos de trabajo. Por lo tanto, tiene la capacidad para modelar procesos y datos, diseñar e implementar sistemas de información y administrar proyectos de software. Aplica criterios de calidad, eficiencia, innovación, responsabilidad y ética en su quehacer profesional.
+}
+\end{tcolorbox}
+
+\vspace{10pt}
+
+% --- FICHA 2: USACH CIVIL ---
+\begin{tcolorbox}[fichaStyle, title={UNIVERSIDAD 02: Universidad de Santiago de Chile (USACH) --- Civil}]
+\small\sffamily
+\textbf{Carrera:} Ingeniería Civil en Informática \hfill \textbf{ID:} \texttt{USACH\_02} \\
+\textbf{Tipo de Plan:} Civil (11 Semestres) \hfill \textbf{Total Asignaturas Malla:} 58
+
+\tcbline
+
+\textbf{Texto Oficial del Perfil de Egreso Declarado:}\\[4pt]
+{\small\rmfamily
+Para la carrera de Ingeniería Civil en Informática, la Universidad de Santiago de Chile ha establecido un compromiso educativo con sus estudiantes. Éste se expresa en los resultados de aprendizaje especificados en este Perfil de Egreso. Dichos resultados han sido clasificados de acuerdo a las áreas oficiales establecidas en el Modelo Educativo Institucional, habiéndose hecho el mayor esfuerzo para que ellos reflejen en la forma más fidedigna posible el aporte efectivamente realizado por la Universidad.
+
+\vspace{4pt}\noindent\textbf{I. ÁREAS PRINCIPALES DE CONOCIMIENTO:}
+El profesional egresado o egresada de la carrera Ingeniería Civil en Informática de la Universidad de Santiago de Chile posee conocimientos en ciencias básicas (matemática y física), ciencias de la ingeniería (matemática aplicada y estadística, gestión de proyectos, teoría de sistemas), ingeniería informática (ciencia de la computación, tecnología de la computación, ingeniería de software, base de datos y sistemas de información, redes de comunicación) y ciencias humanas y sociales (ciencias económicas y financieras, teoría y gestión de la organización, ciencias del comportamiento humano, ética del profesional, lenguaje oral y escrito (español e inglés)).
+
+\vspace{4pt}\noindent\textbf{II. HABILIDADES-DESTREZAS PROFESIONALES:}
+El profesional egresado o egresada de la carrera Ingeniería Civil en Informática de la Universidad de Santiago de Chile posee las siguientes habilidades y destrezas profesionales al momento de egreso:
+\begin{itemize}[noitemsep, leftmargin=*]
+    \item \textbf{(i) Habilidades generales:} 1. Capacidad de aprendizaje autónomo. 2. Capacidad de trabajo en equipo. 3. Capacidad de liderazgo. 4. Capacidad para comunicarse efectivamente en español de forma oral, escrita y simbólica. 5. Capacidad de pensamiento crítico. 6. Capacidad de comunicarse en forma oral y escrita a nivel intermedio en inglés técnico.
+    \item \textbf{(ii) Habilidades especializadas genéricas:} 7. Capacidad para aplicar conocimiento de ciencias básicas, de la Ingeniería y de la especialidad en los ámbitos de su profesión. 8. Capacidad para abordar y resolver problemas de ingeniería en una perspectiva sistémica. 9. Capacidad para diagnosticar, modelar, diseñar y mejorar continuamente sistemas o procesos en el ámbito de su especialidad. 10. Capacidad para formular proyectos de la especialidad y evaluar su factibilidad técnica y económica. 11. Capacidad para gestionar y administrar proyectos o empresas relacionadas con su profesión. 12. Capacidad para utilizar TICs y software de la especialidad, así como técnicas y herramientas modernas de la ingeniería. 13. Entender el impacto de las soluciones de ingeniería en un contexto global, económico, medioambiental y social.
+    \item \textbf{(iii) Habilidades especializadas específicas:} 14. Identificar oportunidades de uso de la información y TICs. 15. Recolectar y analizar datos con métodos y herramientas computacionales para transformarlos en información. 16. Analizar, modelar y desarrollar sistemas, procesos y productos basados en TIC (ofrecidos y en operación). 17. Adecuar las TIC vigentes a los cambios organizacionales. 18. Generar y construir abstracciones de fenómenos del mundo real usando la formación técnica de su especialidad.
+\end{itemize}
+
+\vspace{4pt}\noindent\textbf{III. ACTITUDES Y VALORES:}
+El profesional egresado o egresada de la carrera Ingeniería Civil en Informática de la Universidad de Santiago de Chile posee las actitudes y valores que a continuación se señalan: 1. Comprensión de la responsabilidad profesional, social y ética en todo contexto. 2. Disposición hacia el emprendimiento y la innovación. 3. Adaptabilidad a cambios y contextos diversos. 4. Compromiso con el trabajo bien realizado (Calidad). 5. Disposición para buscar soluciones con recursos escasos.
+}
+\end{tcolorbox}
+
+\newpage
+
+% --- FICHA 3: UCHILE ---
+\begin{tcolorbox}[fichaStyle, title={UNIVERSIDAD 03: Universidad de Chile (UCHILE)}]
+\small\sffamily
+\textbf{Carrera:} Ingeniería Civil en Computación \hfill \textbf{ID:} \texttt{UCHILE\_03} \\
+\textbf{Tipo de Plan:} Civil (11 Semestres) \hfill \textbf{Total Asignaturas Malla:} 54
+
+\tcbline
+
+\textbf{Texto Oficial del Perfil de Egreso Declarado:}\\[4pt]
+{\small\rmfamily
+El Ingeniero y la Ingeniera Civil en Computación (ICC) de la Universidad de Chile, son profesionales que conciben, diseñan, construyen, mantienen, operan, evalúan e integran soluciones computacionales que responden a las exigencias y restricciones que presentan problemas de distinta complejidad y naturaleza, utilizando un enfoque científico e ingenieril y aplicando criterios de eficiencia y eficacia.
+
+\vspace{4pt}
+Los ámbitos que todo egresado y toda egresada domina al término de la carrera son: Fundamentos de la Computación, Ingeniería de Datos, Ingeniería de Software y Sistemas.
+
+\vspace{4pt}\noindent\textbf{Principales habilidades:}
+\begin{itemize}[noitemsep, leftmargin=*]
+    \item Abstraer, modelar y formalizar matemáticamente problemas susceptibles de ser resueltos computacionalmente con el fin de dar soporte al diseño de soluciones utilizando herramientas teóricas, lenguajes y representaciones formales.
+    \item Extraer, obtener, generar, almacenar y recuperar información valiosa de datos diversos, complejos y masivos, así como desarrollar una perspectiva respecto a cómo observar, modelar, procesar y analizar los datos para dar respuestas eficientes a los requerimientos de ese procesamiento.
+    \item Concebir, desarrollar y mantener soluciones de software que den solución a problemas prácticos de forma sistemática y cuantificable, preocupándose por la calidad y la efectividad de las soluciones, siendo al mismo tiempo capaces de gestionar estos proyectos.
+    \item Implementar programas eficientes en el uso de recursos computacionales, explotando las características del sistema operativo y su interacción con la arquitectura de hardware y la red de datos, previniendo, diagnosticando y resolviendo errores de programación y/o problemas de desempeño detectados.
+\end{itemize}
+}
+\end{tcolorbox}
+
+\vspace{10pt}
+
+% --- FICHA 4: UNAB ---
+\begin{tcolorbox}[fichaStyle, title={UNIVERSIDAD 04: Universidad Andrés Bello (UNAB)}]
+\small\sffamily
+\textbf{Carrera:} Ingeniería en Computación e Informática \hfill \textbf{ID:} \texttt{UNAB\_04} \\
+\textbf{Tipo de Plan:} Civil/Ejecución \hfill \textbf{Total Asignaturas Malla:} 41
+
+\tcbline
+
+\textbf{Texto Oficial del Perfil de Egreso Declarado:}\\[4pt]
+{\small\rmfamily
+El egresado de Ingeniería en Computación e Informática titulado de la Universidad Andrés Bello, sustenta su quehacer profesional en los valores de excelencia, integridad respecto de los temas que trabaja y responsabilidad para con la sociedad, capaz de enfrentar su trabajo con una visión pluralista, en un contexto de respecto.
+
+\vspace{4pt}
+La carrera de Ingeniería en Computación e informática forma profesionales con conocimiento técnico y científico para identificar problemas, siendo un líder en la toma de decisiones y ejecución de los proyectos aplicando tecnologías disruptivas, proponiendo soluciones que impactan en la gestión organizacional.
+
+\vspace{4pt}
+El grado de Licenciado(a) en Ingeniería permite que los graduados propongan soluciones a través del sustento que otorga el pensamiento lógico-deductivo, por tanto, es capaz de concebir y diseñar soluciones a problemas existentes en diversas organizaciones como resultado del análisis con base en su haber científico y tecnológico, lo que además lo habilita para realizar estudios de postgrados tanto dentro como fuera del país.
+
+\vspace{4pt}
+La carrera de Ingeniería en Computación e Informática de la Universidad Andrés Bello, forma profesionales capaces de trabajar en equipos multidisciplinarios para proponer alternativas de solución en diseño, desarrollo, evaluación, dirección y control de proyectos tecnológicos que incorporen directrices de calidad y seguridad de la información facilitando transformación digital dentro de las organizaciones.
+}
+\end{tcolorbox}
+
+\newpage
+
+% --- FICHA 5: UMAG ---
+\begin{tcolorbox}[fichaStyle, title={UNIVERSIDAD 05: Universidad de Magallanes (UMAG)}]
+\small\sffamily
+\textbf{Carrera:} Ingeniería en Computación e Informática \hfill \textbf{ID:} \texttt{UMAG\_05} \\
+\textbf{Tipo de Plan:} Civil/Ejecución \hfill \textbf{Total Asignaturas Malla:} 41
+
+\tcbline
+
+\textbf{Texto Oficial del Perfil de Egreso Declarado:}\\[4pt]
+{\small\rmfamily
+El/la Ingeniero/a de la Universidad de Magallanes, en cualquiera de sus cuatro especialidades, es un/a profesional competente con sólidos conocimientos teóricos y prácticos que le permiten desempeñarse en la supervisión, operación, implementación, implantación y mantenimiento de componentes, equipos, procesos y sistemas relacionados a sus respectivas especialidades, en forma eficiente y tomando en consideración factores éticos, sociales y ambientales. Su preparación le permite adaptarse a tecnologías emergentes, así como también a desarrollarse en distintas áreas de su especialidad, constituyéndose en un aporte fundamental a la sociedad.
+}
+\end{tcolorbox}
+
+\vspace{10pt}
+
+% --- FICHA 6: UTEM ---
+\begin{tcolorbox}[fichaStyle, title={UNIVERSIDAD 06: Universidad Tecnológica Metropolitana (UTEM)}]
+\small\sffamily
+\textbf{Carrera:} Ingeniería en Informática \hfill \textbf{ID:} \texttt{UTEM\_06} \\
+\textbf{Tipo de Plan:} Ejecución (8 Semestres) \hfill \textbf{Total Asignaturas Malla:} 44
+
+\tcbline
+
+\textbf{Texto Oficial del Perfil de Egreso Declarado:}\\[4pt]
+{\small\rmfamily
+El(La) Ingeniero(a) en Informática de la Universidad Tecnológica Metropolitana es un(a) profesional con sólida formación en ingeniería aplicada e informática, capacitado(a) para diseñar, desarrollar e integrar soluciones de software y sistemas de información, gestionar redes y recursos computacionales, y administrar tecnologías de la información, considerando criterios de seguridad, confiabilidad, calidad y eficiencia. Puede desempeñarse en organizaciones públicas, privadas y del tercer sector, contribuyendo al desarrollo tecnológico y organizacional mediante el uso de metodologías, herramientas y tecnologías vigentes. Complementa su formación disciplinar con competencias genéricas orientadas al aprendizaje continuo, la comunicación efectiva, el trabajo colaborativo, el emprendimiento, la innovación y el ejercicio profesional con responsabilidad social.
+}
+\end{tcolorbox}
+
+\newpage
+
+% --- FICHA 7: UDEC ---
+\begin{tcolorbox}[fichaStyle, title={UNIVERSIDAD 07: Universidad de Concepción (UDEC)}]
+\small\sffamily
+\textbf{Carrera:} Ingeniería Civil Informática \hfill \textbf{ID:} \texttt{UDEC\_07} \\
+\textbf{Tipo de Plan:} Civil (11 Semestres) \hfill \textbf{Total Asignaturas Malla:} 54
+
+\tcbline
+
+\textbf{Texto Oficial del Perfil de Egreso Declarado:}\\[4pt]
+{\small\rmfamily
+Las/los Ingenieros/as Civiles Informáticos/as de la Universidad de Concepción son profesionales calificados para identificar, abordar y solucionar problemas que requieren procesamiento automático de información. Han sido formados para aplicar principios de matemáticas, ciencias de la ingeniería y de la computación. Están capacitados/as para identificar necesidades de usuarios, a partir de las cuales formulan y diseñan soluciones informáticas que las satisfagan. Pueden analizar e interpretar grandes volúmenes de datos que describen sistemas, así como también, diseñar experimentos para evaluar, caracterizar y modelar sistemas informáticos complejos. Están preparados/as para trabajar en equipo, para comunicarse y desenvolverse con responsabilidad profesional y ética en un contexto global, económico y social. Son profesionales capaces de adaptarse a la dinámica que caracteriza la evolución teórica y tecnológica de la disciplina, estimulados por un proceso de auto-aprendizaje continuo.
+}
+\end{tcolorbox}
+
+\vspace{10pt}
+
+% --- FICHA 8: USM ---
+\begin{tcolorbox}[fichaStyle, title={UNIVERSIDAD 08: Universidad Técnica Federico Santa María (USM)}]
+\small\sffamily
+\textbf{Carrera:} Ingeniería en Informática \hfill \textbf{ID:} \texttt{USM\_08} \\
+\textbf{Tipo de Plan:} Ejecución / Continuidad \hfill \textbf{Total Asignaturas Malla:} 42
+
+\tcbline
+
+\textbf{Texto Oficial del Perfil de Egreso Declarado:}\\[4pt]
+{\small\rmfamily
+La carrera de Ingeniería en Informática de la USM forma profesionales con competencias que les faculta para aplicar un cuerpo distintivo de conocimientos científicos, computacionales, matemáticos y de ingeniería a diversos problemas organizacionales, sociales, industriales. Facultado para el desarrollo de productos y servicios tecnológicos sobre plataformas heterogéneas. Adicionalmente posee conocimientos para aplicar soluciones de análisis de datos avanzado sobre distintos dominios del quehacer de organizaciones públicas o privadas del ámbito nacional e internacional, demostrando capacidad para integrar equipos multidisciplinarios y multiculturales, tomando en consideración las restricciones impuestas por la legislación, la ética, las finanzas y las personas.
+}
+\end{tcolorbox}
+
+\vspace{10pt}
+
+% --- FICHA 9: PUCV ---
+\begin{tcolorbox}[fichaStyle, title={UNIVERSIDAD 09: Pontificia Universidad Católica de Valparaíso (PUCV)}]
+\small\sffamily
+\textbf{Carrera:} Ingeniería Informática \hfill \textbf{ID:} \texttt{PUCV\_09} \\
+\textbf{Tipo de Plan:} Civil/Ejecución \hfill \textbf{Total Asignaturas Malla:} 44
+
+\tcbline
+
+\textbf{Texto Oficial del Perfil de Egreso Declarado:}\vspace{4pt}
+{\small\rmfamily
+\begin{enumerate}[noitemsep, leftmargin=*]
+    \item Reconoce la dimensión trascendente de la existencia humana y la antropología cristiana como respuesta valiosa al sentido de la vida.
+    \item Actúa éticamente, iluminado/a por la propuesta cristiana, en contextos reales, con autonomía y respeto hacia los/las demás, buscando el bien común, la promoción de los derechos humanos y la realización de la persona humana en un contexto de diversidad.
+    \item Comunica de manera clara y coherente sus ideas a través del castellano, su lengua materna, en un contexto académico.
+    \item Usa las tecnologías de la información y comunicación como herramienta del desarrollo académico y profesional.
+    \item Demuestra capacidad científica; de análisis, abstracción, síntesis y reflexión crítica con el objetivo de resolver problemas, construir conocimiento y desarrollar autoaprendizaje, tanto a nivel individual como en el trabajo en equipos interdisciplinarios.
+    \item Comunica en forma oral y escrita en idioma Inglés, con el fin de facilitar su inserción y participación en contextos multiculturales e interdisciplinares.
+    \item Reconoce la lectura, la relación con los demás, la actividad física, la vida sana, el cuidado medioambiental, el arte y la cultura como fuentes de desarrollo personal integral.
+    \item Reconoce según sus intereses, en instancias universitarias de formación para una ciudadanía responsable.
+\end{enumerate}
+}
+\end{tcolorbox}
+
+\vspace{10pt}
+
+% --- FICHA 10: DUOC UC ---
+\begin{tcolorbox}[fichaStyle, title={UNIVERSIDAD 10: Duoc UC}]
+\small\sffamily
+\textbf{Carrera:} Ingeniería Informática \hfill \textbf{ID:} \texttt{DUOC\_10} \\
+\textbf{Tipo de Plan:} Ejecución / Profesional (8 Semestres) \hfill \textbf{Total Asignaturas Malla:} 33
+
+\tcbline
+
+\textbf{Texto Oficial del Perfil de Egreso Declarado:}\\[4pt]
+{\small\rmfamily
+El(la) Ingeniero(a) en Informática de Duoc UC diseña, desarrolla, implementa y despliega soluciones informáticas, resolviendo problemas complejos en su área de especialización profesional. En este contexto, evalúa y aplica estándares, marcos de trabajo y regulatorios, tecnologías y metodologías. Cuenta con una cultura de innovación y trabaja colaborativamente para evaluar y gestionar proyectos informáticos interdisciplinarios, integrando la capacidad analítica y pensamiento crítico, que le permite comprender y resolver las necesidades de las organizaciones.
+
+\vspace{4pt}
+Integra en su quehacer la ética profesional y el aprendizaje permanente. Se comunica a través de distintos medios en diversos contextos en un entorno global. Posee una formación centrada en las personas, con una mirada trascendente, desde la visión cristiana, que da sentido a la vida y contribuye al bien común de la sociedad.
+
+\vspace{4pt}
+Con la mención en Automatización quien se titula de Duoc UC evalúa técnica y económicamente proyectos informáticos, y modela procesos, para automatizarlos por medio de software. Utiliza estándares, marcos de trabajo y regulatorios, tecnologías y metodologías propias del área de especialización profesional, con la finalidad de optimizar los servicios y garantizar su calidad, seguridad y sostenibilidad, en base a los requerimientos de las organizaciones.
+}
+\end{tcolorbox}
+
+\newpage
+
+% --- FICHA 11: USS ---
+\begin{tcolorbox}[fichaStyle, title={UNIVERSIDAD 11: Universidad San Sebastián (USS)}]
+\small\sffamily
+\textbf{Carrera:} Ingeniería Civil en Informática \hfill \textbf{ID:} \texttt{USS\_11} \\
+\textbf{Tipo de Plan:} Civil (10 Semestres) \hfill \textbf{Total Asignaturas Malla:} 50
+
+\tcbline
+
+\textbf{Texto Oficial del Perfil de Egreso Declarado:}\\[4pt]
+{\small\rmfamily
+El/la egresado/a de Ingeniería Civil Informática de la USS es un profesional íntegro, ético y humanista, con sólida formación en ciencias básicas, ingeniería y tecnologías de la información. Está capacitado para diseñar, evaluar e implementar proyectos informáticos, soluciones de sistemas de información y gestionar áreas TI, generando valor organizacional con calidad, seguridad e innovación. Posee habilidades de abstracción, comunicación, trabajo interdisciplinario, manejo de inglés a nivel intermedio, sentido de responsabilidad social, ambiental y liderazgo emprendedor, pudiendo desempeñarse en instituciones públicas y privadas o crear empresas tecnológicas.
+}
+\end{tcolorbox}
+
+\vspace{10pt}
+
+% --- FICHA 12: UST ---
+\begin{tcolorbox}[fichaStyle, title={UNIVERSIDAD 12: Universidad Santo Tomás (UST)}]
+\small\sffamily
+\textbf{Carrera:} Ingeniería Civil en Informática y Sistemas Inteligentes \hfill \textbf{ID:} \texttt{UST\_12} \\
+\textbf{Tipo de Plan:} Civil (10 Semestres) \hfill \textbf{Total Asignaturas Malla:} 60
+
+\tcbline
+
+\textbf{Texto Oficial del Perfil de Egreso Declarado:}\\[4pt]
+{\small\rmfamily
+Las y los egresados de esta carrera tienen por objetivo optimizar procesos, con la capacidad de aplicar principios científicos y tecnológicos e innovación al diseño y desarrollo de sistemas informáticos y de control, incorporando gestión de procesos, que apoyan el desarrollo de proyectos de automatización, robótica y transformación digital, considerando la sustentabilidad ambiental y social.
+
+\vspace{4pt}
+El sello institucional Santo Tomás y su formación en el ámbito valórico, permite identificar en estas y estos profesionales una actitud de compromiso, lealtad y honestidad, características de la formación entregada durante su desarrollo.
+
+\vspace{4pt}
+En el ámbito del trabajo en equipo, demuestran habilidades de liderazgo, conduciendo equipos multidisciplinarios hacia el logro de objetivos en proyectos tecnológicos. Actúan con una firme ética profesional, considerando siempre las implicaciones sociales de sus acciones y las soluciones que implementan. La adaptabilidad es una de sus fortalezas, mostrando una constante actualización en un campo que no deja de evolucionar. Comunican ideas técnicas con claridad a diversos públicos, y su visión estratégica les permite evaluar el impacto de las soluciones tecnológicas, alineando siempre la tecnología con objetivos de desarrollo sostenible y de negocio.
+}
+\end{tcolorbox}
+
+\vspace{10pt}
+
+% --- FICHA 13: UFRO ---
+\begin{tcolorbox}[fichaStyle, title={UNIVERSIDAD 13: Universidad de la Frontera (UFRO)}]
+\small\sffamily
+\textbf{Carrera:} Ingeniería Civil Informática \hfill \textbf{ID:} \texttt{UFRO\_13} \\
+\textbf{Tipo de Plan:} Civil (11 Semestres) \hfill \textbf{Total Asignaturas Malla:} 57
+
+\tcbline
+
+\textbf{Texto Oficial del Perfil de Egreso Declarado:}\\[4pt]
+{\small\rmfamily
+El Ingeniero o la Ingeniera Civil Informático de la Universidad de La Frontera es un o una profesional del área de las tecnologías de la información y comunicación con capacidades para desempeñarse en los ámbitos de diseño e implementación de soluciones informáticas de vanguardia, ingeniería de software e ingeniería de datos, con la finalidad de contribuir al desarrollo económico y social del país.
+
+\vspace{4pt}
+Su sello profesional es el diseño en ingeniería con innovación y responsabilidad social. Cuenta con formación profesional en ciencias básicas, ciencias de la ingeniería, ciencias de la computación y de especialidad, fundamentalmente integración de tecnologías informáticas, ingeniería de software, diseño de proyectos informáticos, análisis y seguridad de datos. La integración de estos conocimientos permite a este o esta profesional solucionar problemas de gestión de la información centrado en las necesidades de las personas a través de la mejora y automatización de los procesos organizacionales.
+
+\vspace{4pt}
+Posee habilidades para comunicarse de manera global, integrar equipos de trabajo de alto rendimiento y aplicar nuevos conocimientos utilizando estrategias apropiadas de aprendizaje. Asimismo, reconoce las responsabilidades éticas en su quehacer profesional.
+
+\vspace{4pt}
+Su formación le permite desempeñarse en organizaciones del sector público o privado, y ejercer su profesión en forma independiente.
+}
+\end{tcolorbox}
+
+\newpage
+
+% --- FICHA 14: UBB ---
+\begin{tcolorbox}[fichaStyle, title={UNIVERSIDAD 14: Universidad del Bío-Bío (UBB)}]
+\small\sffamily
+\textbf{Carrera:} Ingeniería de Ejecución en Computación e Informática \hfill \textbf{ID:} \texttt{UBB\_14} \\
+\textbf{Tipo de Plan:} Ejecución (8 Semestres) \hfill \textbf{Total Asignaturas Malla:} 46
+
+\tcbline
+
+\textbf{Texto Oficial del Perfil de Egreso Declarado:}\\[4pt]
+{\small\rmfamily
+El/la ingeniero/a de ejecución en computación e informática de la Universidad del Bío-Bío posee una sólida formación en las Tecnologías de Información y Comunicación (TIC) y en gestión organizacional. Lo anterior le permite analizar, diseñar, construir e implementar soluciones informáticas efectivas y eficientes para resolver diversas necesidades de la comunidad.
+
+\vspace{4pt}
+Está capacitado para aplicar conocimientos en las áreas disciplinares de sistemas computacionales y TIC, gestión informática, ingeniería de software y área de las matemáticas. Se distingue por su capacidad de adaptación, autoaprendizaje, responsabilidad social, trabajo en equipo y respeto a la diversidad y es capaz de adaptarse con facilidad a distintos ambientes laborales y a las Tecnologías de Información y Comunicación emergentes, demostrando alta capacidad y motivación por un autoaprendizaje permanente y tenacidad para llevar adelante exitosamente los proyectos en que se involucra.
+}
+\end{tcolorbox}
+
+\vspace{10pt}
+
+% --- FICHA 15: UTALCA ---
+\begin{tcolorbox}[fichaStyle, title={UNIVERSIDAD 15: Universidad de Talca (UTALCA)}]
+\small\sffamily
+\textbf{Carrera:} Ingeniería Civil en Computación \hfill \textbf{ID:} \texttt{UTALCA\_15} \\
+\textbf{Tipo de Plan:} Civil (10 Semestres) \hfill \textbf{Total Asignaturas Malla:} 43
+
+\tcbline
+
+\textbf{Texto Oficial del Perfil de Egreso Declarado:}\\[4pt]
+{\small\rmfamily
+Quienes egresan de la carrera de Ingeniería Civil en Computación de la Universidad de Talca son profesionales integrales, con enfoque en el área de la informática, capaces de idear, diseñar, desarrollar y desplegar soluciones de software innovadoras, considerando aspectos técnicos, económicos, sociales y/o ambientales.
+
+\vspace{4pt}
+Gracias a su base formativa en ciencias básicas y de la ingeniería, poseen una visión integral de los sistemas computacionales y la capacidad de resolver problemas desafiantes, de manera profesional, con sentido ético y de responsabilidad social. Así mismo, la formación en emprendimiento les permite identificar oportunidades de negocio en el sector tecnológico y desarrollar proyectos propios.
+
+\vspace{4pt}
+Además, cuentan con habilidades de comunicación y liderazgo que le permiten trabajar colaborativamente en equipos multi e interdisciplinarios y adaptarse a entornos profesionales en constante evolución.
+}
+\end{tcolorbox}
+
+\newpage
+
+% --- FICHA 16: UAUTONOMA ---
+\begin{tcolorbox}[fichaStyle, title={UNIVERSIDAD 16: Universidad Autónoma de Chile (UAUTONOMA)}]
+\small\sffamily
+\textbf{Carrera:} Ingeniería en Informática \hfill \textbf{ID:} \texttt{UAUTONOMA\_16} \\
+\textbf{Tipo de Plan:} Ejecución (8 Semestres) \hfill \textbf{Total Asignaturas Malla:} 32
+
+\tcbline
+
+\textbf{Texto Oficial del Perfil de Egreso Declarado:}\\[4pt]
+{\small\rmfamily
+Quien egrese de la carrera de Ingeniería Informática de la Universidad Autónoma de Chile, es un profesional con formación científica y tecnológica en ciencias básicas, ciencias de la ingeniería y de la ingeniería aplicada para resolver problemas fundamentales y propios de las organizaciones.
+
+\vspace{4pt}
+Es capaz de desempeñarse en el diagnóstico, diseño y gestión, en estructurar y recomendar evaluación de planes para la mejora de resultados de procesos informáticos, tanto en organizaciones de producción de bienes como de servicios, o en sus propios emprendimientos. Considerando los recursos humanos, financieros y tecnológicos, así como también, los aspectos legales, normativos y los distintos agentes que influyen en los procesos de mejora, comunicándolo de manera efectiva mediante el uso de tecnologías disponibles acorde a su profesión.
+
+\vspace{4pt}
+El Ingeniero Informático, posee como sello diferenciador la capacidad de trabajo en equipos multidisciplinarios, bajo un marco de comportamiento ético, responsabilidad social, visión sistemática y de evaluación de riesgos.
+}
+\end{tcolorbox}
+
+\vfill
+\begin{center}
+    \small\sffamily\color{gray!80}
+    Documento generado para el Trabajo de Titulación --- Universidad de Santiago de Chile, 2026.
+\end{center}
+
+\end{document}

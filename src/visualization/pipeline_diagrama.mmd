@@ -1,0 +1,89 @@
+flowchart TD
+    %% ========================================================
+    %% PIPELINE COMPUTACIONAL REFINADO: INGESTA -> BD ESTRUCTURADA -> SBERT -> BD VECTORIAL -> CLUSTERING -> DASHBOARD
+    %% ========================================================
+
+    subgraph F1["1. Ingesta de Datos & Ground Truth Curado"]
+        direction TB
+        A1["16 Mallas Curriculares<br/><b>746 Asignaturas</b><br/><i></i>"]
+        A2["Curaduría Ground Truth ACM<br/><b>746 Asignaturas etiquetadas</b><br/><i>(23 Áreas ACM/IEEE-CS ya asignadas)</i>"]
+        A3["16 Perfiles de Egreso Declarados<br/><b>Textos Oficiales</b><br/><i>(Competencias y Resultados de Aprendizaje)</i>"]
+        A4["Marco Taxonómico ACM/IEEE-CS<br/><b>23 Áreas de Conocimiento</b><br/><i>(Descriptores canónicos de referencia)</i>"]
+        A5["Mercado Laboral LinkedIn<br/><b>200 Ofertas Laborales</b><br/><i>(100 Empresa TI / 100 Sector No-TI)</i>"]
+    end
+
+    subgraph F2["2. Capa de Datos Estructurada (Fuente de Verdad)"]
+        direction TB
+        B1[("Base de Datos Estructurada<br/><b>PostgreSQL / SQLite / JSON Schema</b><br/><i>Tablas: Universidades, Mallas, Perfiles, ACM, Trabajos</i>")]
+        B2["Pipeline de Normalización Textual<br/><i>(Limpieza léxica, minúsculas, filtrado stop-words académicas)</i>"]
+    end
+
+    subgraph F3["3. Modelo de Embeddings & Capa Vectorial"]
+        direction TB
+        C1["Modelo Sentence-Transformers SBERT<br/><b>paraphrase-multilingual-mpnet-base-v2</b>"]
+        C2["Generación de Embeddings Densos en R^768<br/><b>v_malla, v_perfil, v_acm, v_laboral</b>"]
+        C3[("Base de Datos Vectorial<br/><b>ChromaDB / Qdrant / PGVector</b><br/><i>Indexación HNSW + Metadatos asociados</i>")]
+    end
+
+    subgraph F4["4. Modelamiento Curricular Tripartito & Métricas"]
+        direction TB
+        D1["Clustering K-Means<br/><i>(Particiones convexas y centroides formativos c_k)</i>"]
+        D2["Agrupamiento Jerárquico Aglomerativo<br/><i>(Dendrogramas y relaciones taxonómicas anidadas)</i>"]
+        D3["Clustering DBSCAN<br/><i>(Aislamiento de asignaturas atípicas y outliers)</i>"]
+        D4["Reducción Dimensional UMAP<br/><b>Proyección 2D/3D (Trustworthiness ≥ 0.85)</b>"]
+        D5["Métricas de Alineación Trilateral<br/><b>Similitud Coseno cos θ</b><br/><b>Tasa Cobertura ACM %</b><br/><b>Brecha Formativa (1 - cos θ)</b>"]
+        D6["Validación Extrínseca vs Ground Truth<br/><b>Adjusted Rand Index (ARI), NMI, Pureza</b>"]
+    end
+
+    subgraph F5["5. Almacenamiento de Resultados, Dashboard & Validación"]
+        direction TB
+        E1["Exportación de Artefactos de Consumo<br/><i>matrices_similitud.json, coords_umap.json</i>"]
+        E2["Dashboard Interactivo en React<br/><b>Visualizador de Mapas Semánticos y Brechas</b>"]
+        E3["Validación Cualitativa con Expertos<br/><b>Panel independiente de 3 evaluadores</b>"]
+    end
+
+    %% Conexiones de Ingesta a BD Estructurada
+    A1 --> B1
+    A2 --> B1
+    A3 --> B1
+    A4 --> B1
+    A5 --> B1
+
+    %% De BD Estructurada a Normalización y SBERT
+    B1 --> B2
+    B2 --> C1
+    C1 --> C2
+
+    %% De Embeddings a BD Vectorial
+    C2 --> C3
+
+    %% De BD Vectorial a Modelamiento y Métricas
+    C3 --> D1
+    C3 --> D2
+    C3 --> D3
+    C3 --> D4
+    C3 --> D5
+
+    %% Validación Ground Truth (usa las etiquetas de B1 y clusters de D1)
+    B1 -.-> D6
+    D1 --> D6
+
+    %% De Modelamiento a Resultados y Dashboard
+    D1 --> E1
+    D4 --> E1
+    D5 --> E1
+    E1 --> E2
+    E2 --> E3
+
+    %% Estilos de Nodos y Colores
+    classDef fase1 fill:#E8EEF5,stroke:#002855,stroke-width:2px,color:#002855;
+    classDef fase2 fill:#F5EEF8,stroke:#6C3483,stroke-width:2px,color:#512E5F;
+    classDef fase3 fill:#FEF3E6,stroke:#EA7600,stroke-width:2px,color:#9E4B00;
+    classDef fase4 fill:#EBF5FB,stroke:#1B4F72,stroke-width:2px,color:#1B4F72;
+    classDef fase5 fill:#EAFAF1,stroke:#1E8449,stroke-width:2px,color:#145A32;
+
+    class A1,A2,A3,A4,A5 fase1;
+    class B1,B2 fase2;
+    class C1,C2,C3 fase3;
+    class D1,D2,D3,D4,D5,D6 fase4;
+    class E1,E2,E3 fase5;
